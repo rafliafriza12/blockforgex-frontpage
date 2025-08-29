@@ -221,15 +221,15 @@ export default function ApplicationLayout() {
       {isDesktop && (
         <aside className="bg-[#F9F9FD] ">
           <div className="min-h-full p-10 flex flex-col justify-between">
-            <div>
+            <div className="w-full">
               <div className="flex items-center gap-2 mb-8 shrink-0">
                 <img src={logo} alt="Blockforgex" className="w-[166px]" />
               </div>
 
-              <div className="max-w-xl">
+              <div className="w-full">
                 <Title
                   level={2}
-                  className="!text-[40px] !leading-[120%] !font-semibold !tracking-normal md:!w-full overflow-hidden !mb-2"
+                  className="!text-[40px] !leading-[120%]  !font-semibold !tracking-normal md:!w-full overflow-hidden !mb-2"
                 >
                   {meta.title}
                 </Title>
