@@ -1,0 +1,138 @@
+import { Form, Input, Radio, Checkbox, Card, Typography, Space } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { upsert } from "../../store/appSlice";
+import { selectApp } from "../../store";
+import { useEffect } from "react";
+import { FileSearchOutlined, GlobalOutlined } from "@ant-design/icons";
+import { JobSearchIcon } from "hugeicons-react";
+import { DashboardBrowsingIcon } from "hugeicons-react";
+
+const { Text } = Typography;
+
+export default function Step1({ onNext, setSubmitter }) {
+  const dispatch = useDispatch();
+  const app = useSelector(selectApp);
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    setSubmitter?.(form.submit);
+    return () => setSubmitter?.(null);
+  }, [form, setSubmitter]);
+
+  const onFinish = (values) => {
+    dispatch(upsert(values));
+    onNext();
+  };
+
+  const onFinishFailed = ({ errorFields }) => {
+    if (errorFields?.length) {
+      form.scrollToField?.(errorFields[0].name);
+    }
+  };
+
+  return (
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+      requiredMark={false}
+      initialValues={{
+        fullName: app.fullName,
+        email: app.email,
+        jobStatus: app.jobStatus ?? "active",
+        consents: app.consents ?? [],
+      }}
+      className="[&_.ant-form-item-label>label]:font-medium h-full flex flex-col  lg:gap-0 lg:justify-between"
+    >
+      <Form.Item
+        label="Full Name"
+        name="fullName"
+        rules={[{ required: true, message: "Full name is required" }]}
+      >
+        <Input className="rf-input " placeholder="Zen Nakano" />
+      </Form.Item>
+
+      <Form.Item
+        label="Email"
+        name="email"
+        rules={[
+          { required: true, message: "Email is required" },
+          { type: "email", message: "Invalid email" },
+        ]}
+      >
+        <Input className="rf-input" placeholder="Enter your email..." />
+      </Form.Item>
+
+      <Form.Item
+        label="Job Search Status"
+        name="jobStatus"
+        rules={[{ required: true, message: "Please choose one" }]}
+      >
+        <Radio.Group className="rf-radio w-full relative z-[0]">
+          <div className="flex flex-wrap w-full gap-4">
+            <Radio.Button
+              value="active"
+              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 !rounded-xl !whitespace-wrap !text-center"
+            >
+              <JobSearchIcon
+                size={20}
+                color="currentColor"
+                className="align-middle"
+              />
+              <span>Actively looking for a job.</span>
+            </Radio.Button>
+
+            <Radio.Button
+              value="casual"
+              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 !rounded-xl !whitespace-wrap !text-center"
+            >
+              <DashboardBrowsingIcon
+                size={20}
+                color="currentColor"
+                className="align-middle"
+              />
+              <span>Casually browsing.</span>
+            </Radio.Button>
+          </div>
+        </Radio.Group>
+      </Form.Item>
+
+      <Card
+        variant="borderless"
+        className="rounded-xl bg-gray-50/70 lg:border lg:border-gray-200 [&_.ant-card-body]:!p-0 lg:[&_.ant-card-body]:!p-6"
+      >
+        <Text className="text-[#4B5563] font-medium">
+          For evaluation and communication purposes in line with privacy policy
+          and cookie policy, I consent to:
+        </Text>
+        <div className="h-3" />
+        <Form.Item
+          name="consents"
+          rules={[
+            {
+              type: "array",
+              required: true,
+              min: 1,
+              message: "Please choose at least one",
+            },
+          ]}
+        >
+          <Checkbox.Group className="grid gap-3">
+            <Checkbox value="data">
+              The processing and storing of my submitted personal data.
+            </Checkbox>
+            <Checkbox value="tools">
+              The use of call recording, note-taking tools, and external
+              assessment tools.
+            </Checkbox>
+            <Checkbox value="cookies">
+              The use of cookies to improve functionality, enchange experience,
+              and analyze site usage
+            </Checkbox>
+          </Checkbox.Group>
+        </Form.Item>
+      </Card>
+    </Form>
+  );
+}
