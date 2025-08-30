@@ -68,43 +68,44 @@ export default function StepPage({ total = 7 }) {
 
   return (
     <>
-      <section className="lg:h-full flex flex-col justify-start gap-5 lg:gap-0 lg:justify-between p-5 pb-[45%]  lg:p-10 ">
-        {!isDesktop && (
-          <div className="flex items-center justify-between ">
-            <img src={logo} alt="Blockforgex" className="h-11" />
+      <section className="lg:h-full flex flex-col justify-start gap-5 lg:gap-0 lg:justify-between  p-5 pt-0 pb-[45%]  lg:p-10 ">
+        <div className="flex flex-col gap-5 sticky top-0 pt-5 lg:pt-0 bg-white z-[10]">
+          {!isDesktop && (
+            <div className="flex items-center justify-between ">
+              <img src={logo} alt="Blockforgex" className="h-11" />
 
-            {fullName && n > 1 && (
+              {fullName && n > 1 && (
+                <div className="flex items-center gap-2">
+                  <Avatar size={28} className="rf-avatar-initials">
+                    {initials}
+                  </Avatar>
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="flex items-center justify-between">
+            <Text className="!text-sm lg:!text-2xl !font-medium  tracking-[0.13em] text-center !text-[#4F46E5]">
+              STEP {n} OF {total}
+            </Text>
+
+            {fullName && n > 1 && isDesktop && (
               <div className="flex items-center gap-2">
                 <Avatar size={28} className="rf-avatar-initials">
                   {initials}
                 </Avatar>
+                <Text className="text-gray-600">{fullName}</Text>
               </div>
             )}
           </div>
-        )}
 
-        <div className="flex items-center justify-between">
-          <Text className="!text-sm lg:!text-2xl !font-medium  tracking-[0.13em] text-center !text-[#4F46E5]">
-            STEP {n} OF {total}
-          </Text>
-
-          {fullName && n > 1 && isDesktop && (
-            <div className="flex items-center gap-2">
-              <Avatar size={28} className="rf-avatar-initials">
-                {initials}
-              </Avatar>
-              <Text className="text-gray-600">{fullName}</Text>
-            </div>
-          )}
+          <div className=" h-0.5 w-full bg-gray-200 rounded">
+            <div
+              className="h-0.5 bg-indigo-600 rounded"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
         </div>
-
-        <div className=" h-0.5 w-full bg-gray-200 rounded">
-          <div
-            className="h-0.5 bg-indigo-600 rounded"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-
         {leftMeta && !isDesktop && (
           <div className="lg:hidden ">
             <h2 className="text-xl text-[#1F2937] !font-semibold">

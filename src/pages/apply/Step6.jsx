@@ -1,173 +1,181 @@
-import { Form, Radio } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { upsert } from "../../store/appSlice";
 import { selectApp } from "../../store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
-  InboxOutlined,
-  ApartmentOutlined,
-  ClockCircleOutlined,
-  HourglassOutlined,
-  RocketOutlined,
-} from "@ant-design/icons"; // contoh ikon
-import { Task01Icon } from "hugeicons-react";
-import { CheckListIcon } from "hugeicons-react";
-import { Plant01Icon } from "hugeicons-react";
-import { BulbChargingIcon } from "hugeicons-react";
-import { Rocket01Icon } from "hugeicons-react";
-import { CrownIcon } from "hugeicons-react";
+  Plant01Icon,
+  BulbChargingIcon,
+  Rocket01Icon,
+  CrownIcon,
+} from "hugeicons-react";
 
 export default function Step6({ onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
-  const [form] = Form.useForm();
+  const [level, setLevel] = useState(app.businessType || "");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    setSubmitter?.(form.submit);
+    setSubmitter?.(handleSubmit);
     return () => setSubmitter?.(null);
-  }, [form, setSubmitter]);
+  }, [setSubmitter, level]);
 
-  const onFinish = (values) => {
-    dispatch(upsert(values));
+  const handleSubmit = () => {
+    if (!level) {
+      setError("Level is required");
+      return;
+    }
+    setError(""); // reset error
+    dispatch(upsert({ businessType: level }));
     onNext();
   };
 
   return (
-    <Form
-      form={form}
-      layout="vertical"
-      onFinish={onFinish}
-      requiredMark={false}
-      initialValues={{ businessType: app.businessType || "individual" }}
-      className="[&_.ant-form-item-label>label]:font-medium "
+    <form
+      className="w-full flex flex-col gap-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
     >
-      <Form.Item
-        label=""
-        name="businessType"
-        rules={[
-          { required: true, message: "Please select your business type" },
-        ]}
+      {/* BEGINNER */}
+      <label
+        className={`relative w-full rounded-xl p-4 flex items-start gap-3 cursor-pointer border ${
+          level === "beginner"
+            ? "border-indigo-600 bg-indigo-50 shadow-inner"
+            : "border-gray-300 bg-white"
+        }`}
       >
-        <Radio.Group className="w-full">
-          <div className="grid gap-4">
-            {/* Individual */}
-            <Radio value="beginner" className="rf-choice group w-full">
-              <div
-                className="
-            relative w-full rounded-xl border border-[#E6E6E6] bg-white p-4
-            group-[.ant-radio-wrapper-checked]:border-[#4F46E5]
-            group-[.ant-radio-wrapper-checked]:bg-[#F9F9FD]
-            group-[.ant-radio-wrapper-checked]:shadow-[inset_0_0_0_2px_rgba(79,70,229,0.20)]
-          "
-              >
-                <div className="flex items-start gap-3">
-                  {/* ICON KIRI */}
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-                    {/* ganti ikonmu sendiri */}
-                    <Plant01Icon />
-                  </div>
+        <input
+          type="radio"
+          name="businessType"
+          value="beginner"
+          checked={level === "beginner"}
+          onChange={(e) => setLevel(e.target.value)}
+          className="absolute top-4 right-4 h-5 w-5 
+             appearance-none rounded-full border border-gray-400 bg-white
+             checked:border-indigo-600 checked:bg-white
+             cursor-pointer
+             before:content-[''] before:block before:absolute before:inset-1
+             before:rounded-full before:bg-white
+             checked:before:bg-indigo-600"
+        />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <Plant01Icon />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-[#4F46E5]">Beginner</div>
+          <p className="mt-1 text-gray-500">
+            I can interact in a simple way, if the other person talks slowly and
+            is able to cooperate.
+          </p>
+        </div>
+      </label>
 
-                  {/* TEKS TENGAH */}
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[#4F46E5] leading-[1.2]">
-                        Beginner
-                      </div>
-                    </div>
-                    <p className="mt-1 text-gray-500">
-                      I can interact in a simple way, if the other person talks
-                      slowly and is able to cooperate.{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Radio>
+      {/* INTERMEDIATE */}
+      <label
+        className={`relative w-full rounded-xl p-4 flex items-start gap-3 cursor-pointer border ${
+          level === "intermediate"
+            ? "border-indigo-600 bg-indigo-50 shadow-inner"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="businessType"
+          value="intermediate"
+          checked={level === "intermediate"}
+          onChange={(e) => setLevel(e.target.value)}
+          className="absolute top-4 right-4 h-5 w-5 
+             appearance-none rounded-full border border-gray-400 bg-white
+             checked:border-indigo-600 checked:bg-white
+             cursor-pointer
+             before:content-[''] before:block before:absolute before:inset-1
+             before:rounded-full before:bg-white
+             checked:before:bg-indigo-600"
+        />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <BulbChargingIcon />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-[#4F46E5]">Intermediate</div>
+          <p className="mt-1 text-gray-500">
+            I can explain my decisions and follow most instructions in text or
+            speech, though I sometimes need repetition.
+          </p>
+        </div>
+      </label>
 
-            {/* Company */}
-            <Radio value="intermediate" className="rf-choice group w-full">
-              <div
-                className="
-            relative w-full rounded-xl border border-[#E6E6E6] bg-white p-4
-            group-[.ant-radio-wrapper-checked]:border-[#4F46E5]
-            group-[.ant-radio-wrapper-checked]:bg-[#F9F9FD]
-            group-[.ant-radio-wrapper-checked]:shadow-[inset_0_0_0_2px_rgba(79,70,229,0.20)]
-          "
-              >
-                <div className="flex items-start gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-                    <BulbChargingIcon />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[#4F46E5] leading-[1.2]">
-                        Intermediate
-                      </div>
-                    </div>
-                    <p className="mt-1 text-gray-500">
-                      I can explain my decisions and follow most instructions in
-                      text or speech, though I sometimes need repetition.{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Radio>
-            <Radio value="advanced" className="rf-choice group w-full">
-              <div
-                className="
-            relative w-full rounded-xl border border-[#E6E6E6] bg-white p-4
-            group-[.ant-radio-wrapper-checked]:border-[#4F46E5]
-            group-[.ant-radio-wrapper-checked]:bg-[#F9F9FD]
-            group-[.ant-radio-wrapper-checked]:shadow-[inset_0_0_0_2px_rgba(79,70,229,0.20)]
-          "
-              >
-                <div className="flex items-start gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-                    <Rocket01Icon />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[#4F46E5] leading-[1.2]">
-                        Advanced
-                      </div>
-                    </div>
-                    <p className="mt-1 text-gray-500">
-                      I understand and use complex language, speak on technical
-                      topics, and communicate spontaneously with ease.{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Radio>
-            <Radio value="proficient" className="rf-choice group w-full">
-              <div
-                className="
-            relative w-full rounded-xl border border-[#E6E6E6] bg-white p-4
-            group-[.ant-radio-wrapper-checked]:border-[#4F46E5]
-            group-[.ant-radio-wrapper-checked]:bg-[#F9F9FD]
-            group-[.ant-radio-wrapper-checked]:shadow-[inset_0_0_0_2px_rgba(79,70,229,0.20)]
-          "
-              >
-                <div className="flex items-start gap-3">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-                    <CrownIcon />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-[#4F46E5] leading-[1.2]">
-                        Proficient
-                      </div>
-                    </div>
-                    <p className="mt-1 text-gray-500">
-                      I understand almost everything I hear or read and speak
-                      confidently with nuance in complex situations.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Radio>
-          </div>
-        </Radio.Group>
-      </Form.Item>
-    </Form>
+      {/* ADVANCED */}
+      <label
+        className={`relative w-full rounded-xl p-4 flex items-start gap-3 cursor-pointer border ${
+          level === "advanced"
+            ? "border-indigo-600 bg-indigo-50 shadow-inner"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="businessType"
+          value="advanced"
+          checked={level === "advanced"}
+          onChange={(e) => setLevel(e.target.value)}
+          className="absolute top-4 right-4 h-5 w-5 
+             appearance-none rounded-full border border-gray-400 bg-white
+             checked:border-indigo-600 checked:bg-white
+             cursor-pointer
+             before:content-[''] before:block before:absolute before:inset-1
+             before:rounded-full before:bg-white
+             checked:before:bg-indigo-600"
+        />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <Rocket01Icon />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-[#4F46E5]">Advanced</div>
+          <p className="mt-1 text-gray-500">
+            I understand and use complex language, speak on technical topics,
+            and communicate spontaneously with ease.
+          </p>
+        </div>
+      </label>
+
+      {/* PROFICIENT */}
+      <label
+        className={`relative w-full rounded-xl p-4 flex items-start gap-3 cursor-pointer border ${
+          level === "proficient"
+            ? "border-indigo-600 bg-indigo-50 shadow-inner"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="businessType"
+          value="proficient"
+          checked={level === "proficient"}
+          onChange={(e) => setLevel(e.target.value)}
+          className="absolute top-4 right-4 h-5 w-5 
+             appearance-none rounded-full border border-gray-400 bg-white
+             checked:border-indigo-600 checked:bg-white
+             cursor-pointer
+             before:content-[''] before:block before:absolute before:inset-1
+             before:rounded-full before:bg-white
+             checked:before:bg-indigo-600"
+        />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <CrownIcon />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-[#4F46E5]">Proficient</div>
+          <p className="mt-1 text-gray-500">
+            I understand almost everything I hear or read and speak confidently
+            with nuance in complex situations.
+          </p>
+        </div>
+      </label>
+
+      {/* ERROR MESSAGE */}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+    </form>
   );
 }

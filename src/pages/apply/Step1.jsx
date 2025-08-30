@@ -50,7 +50,7 @@ export default function Step1({ onNext, setSubmitter }) {
         name="fullName"
         rules={[{ required: true, message: "Full name is required" }]}
       >
-        <Input className="rf-input " placeholder="Zen Nakano" />
+        <Input className="rf-input relative z-[0]" placeholder="Zen Nakano" />
       </Form.Item>
 
       <Form.Item
@@ -61,7 +61,10 @@ export default function Step1({ onNext, setSubmitter }) {
           { type: "email", message: "Invalid email" },
         ]}
       >
-        <Input className="rf-input" placeholder="Enter your email..." />
+        <Input
+          className="rf-input relative z-[0]"
+          placeholder="Enter your email..."
+        />
       </Form.Item>
 
       <Form.Item

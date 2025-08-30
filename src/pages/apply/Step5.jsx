@@ -1,133 +1,134 @@
-import { Form, Radio } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
-import { upsert } from '../../store/appSlice'
-import { selectApp } from '../../store'
-import { useEffect } from 'react'
-import { InboxOutlined, ApartmentOutlined, ClockCircleOutlined, HourglassOutlined } from '@ant-design/icons' // contoh ikon
-import { Task01Icon } from 'hugeicons-react'
-import { CheckListIcon } from 'hugeicons-react'
+import { useDispatch, useSelector } from "react-redux";
+import { upsert } from "../../store/appSlice";
+import { selectApp } from "../../store";
+import { useEffect, useState } from "react";
+import { ClockCircleOutlined, HourglassOutlined } from "@ant-design/icons";
+import { CheckListIcon } from "hugeicons-react";
 
 export default function Step5({ onNext, setSubmitter }) {
-    const dispatch = useDispatch()
-    const app = useSelector(selectApp)
-    const [form] = Form.useForm()
+  const dispatch = useDispatch();
+  const app = useSelector(selectApp);
+  const [workType, setWorkType] = useState(app.workType || "");
+  const [error, setError] = useState("");
 
-    useEffect(() => {
-        setSubmitter?.(form.submit)
-        return () => setSubmitter?.(null)
-    }, [form, setSubmitter])
+  useEffect(() => {
+    setSubmitter?.(handleSubmit);
+    return () => setSubmitter?.(null);
+  }, [setSubmitter, workType]);
 
-    const onFinish = (values) => {
-        dispatch(upsert(values))
-        onNext()
+  const handleSubmit = () => {
+    if (!workType) {
+      setError("Work type is required");
+      return;
     }
+    setError(""); // reset error kalau valid
+    dispatch(upsert({ workType }));
+    onNext();
+  };
 
-    return (
-        <Form
-            form={form}
-            layout="vertical"
-            onFinish={onFinish}
-            requiredMark={false}
-            initialValues={{ businessType: app.businessType || 'individual' }}
-            className="[&_.ant-form-item-label>label]:font-medium"
-        >
-            <Form.Item
-                label=""
-                name="businessType"
-                rules={[{ required: true, message: 'Please select your business type' }]}
-            >
-                <Radio.Group className="w-full">
-                    <div className="grid gap-4">
-                        {/* Individual */}
-                        <Radio value="fulltime" className="rf-choice group w-full">
-                            <div
-                                className="
-            relative w-full rounded-xl border border-[#E6E6E6] bg-white p-4
-            group-[.ant-radio-wrapper-checked]:border-[#4F46E5]
-            group-[.ant-radio-wrapper-checked]:bg-[#F9F9FD]
-            group-[.ant-radio-wrapper-checked]:shadow-[inset_0_0_0_2px_rgba(79,70,229,0.20)]
-          "
-                            >
-                                <div className="flex items-start gap-3">
-                                    {/* ICON KIRI */}
-                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-                                        {/* ganti ikonmu sendiri */}
-                                        <ClockCircleOutlined />
-                                    </div>
+  return (
+    <form
+      className="w-full flex flex-col gap-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
+      {/* FULLTIME */}
+      <label
+        className={`relative w-full rounded-xl p-4 flex items-start gap-3 cursor-pointer border ${
+          workType === "fulltime"
+            ? "border-indigo-600 bg-indigo-50 shadow-inner"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="workType"
+          value="fulltime"
+          checked={workType === "fulltime"}
+          onChange={(e) => setWorkType(e.target.value)}
+          className="absolute top-4 right-4 h-5 w-5 
+             appearance-none rounded-full border border-gray-400 bg-white
+             checked:border-indigo-600 checked:bg-white
+             cursor-pointer
+             before:content-[''] before:block before:absolute before:inset-1
+             before:rounded-full before:bg-white
+             checked:before:bg-indigo-600"
+        />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <ClockCircleOutlined />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-[#4F46E5]">Fulltime</div>
+          <p className="mt-1 text-gray-500">40 hours per week.</p>
+        </div>
+      </label>
 
-                                    {/* TEKS TENGAH */}
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between">
-                                            <div className="font-semibold text-[#4F46E5] leading-[1.2]">
-                                                Fulltime
-                                            </div>
-                                        </div>
-                                        <p className="mt-1 text-gray-500">
-                                            40 hours per week.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </Radio>
+      {/* PARTTIME */}
+      <label
+        className={`relative w-full rounded-xl p-4 flex items-start gap-3 cursor-pointer border ${
+          workType === "parttime"
+            ? "border-indigo-600 bg-indigo-50 shadow-inner"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="workType"
+          value="parttime"
+          checked={workType === "parttime"}
+          onChange={(e) => setWorkType(e.target.value)}
+          className="absolute top-4 right-4 h-5 w-5 
+             appearance-none rounded-full border border-gray-400 bg-white
+             checked:border-indigo-600 checked:bg-white
+             cursor-pointer
+             before:content-[''] before:block before:absolute before:inset-1
+             before:rounded-full before:bg-white
+             checked:before:bg-indigo-600"
+        />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <HourglassOutlined />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-[#4F46E5]">Part-time</div>
+          <p className="mt-1 text-gray-500">20-30 hours per week.</p>
+        </div>
+      </label>
 
-                        {/* Company */}
-                        <Radio value="parttime" className="rf-choice group w-full">
-                            <div
-                                className="
-            relative w-full rounded-xl border border-[#E6E6E6] bg-white p-4
-            group-[.ant-radio-wrapper-checked]:border-[#4F46E5]
-            group-[.ant-radio-wrapper-checked]:bg-[#F9F9FD]
-            group-[.ant-radio-wrapper-checked]:shadow-[inset_0_0_0_2px_rgba(79,70,229,0.20)]
-          "
-                            >
-                                <div className="flex items-start gap-3">
-                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-                                        <HourglassOutlined />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between">
-                                            <div className="font-semibold text-[#4F46E5] leading-[1.2]">
-                                                Part-time
-                                            </div>
-                                        </div>
-                                        <p className="mt-1 text-gray-500">
-                                            20-30 hours per week.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </Radio>
-                        <Radio value="asneeded" className="rf-choice group w-full">
-                            <div
-                                className="
-            relative w-full rounded-xl border border-[#E6E6E6] bg-white p-4
-            group-[.ant-radio-wrapper-checked]:border-[#4F46E5]
-            group-[.ant-radio-wrapper-checked]:bg-[#F9F9FD]
-            group-[.ant-radio-wrapper-checked]:shadow-[inset_0_0_0_2px_rgba(79,70,229,0.20)]
-          "
-                            >
-                                <div className="flex items-start gap-3">
-                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-                                        <CheckListIcon />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between">
-                                            <div className="font-semibold text-[#4F46E5] leading-[1.2]">
-                                                As Needed
-                                            </div>
-                                        </div>
-                                        <p className="mt-1 text-gray-500">
-                                            Flexible hours, on my own time.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </Radio>
-                    </div>
-                </Radio.Group>
-            </Form.Item>
+      {/* AS NEEDED */}
+      <label
+        className={`relative w-full rounded-xl p-4 flex items-start gap-3 cursor-pointer border ${
+          workType === "asneeded"
+            ? "border-indigo-600 bg-indigo-50 shadow-inner"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        <input
+          type="radio"
+          name="workType"
+          value="asneeded"
+          checked={workType === "asneeded"}
+          onChange={(e) => setWorkType(e.target.value)}
+          className="absolute top-4 right-4 h-5 w-5 
+             appearance-none rounded-full border border-gray-400 bg-white
+             checked:border-indigo-600 checked:bg-white
+             cursor-pointer
+             before:content-[''] before:block before:absolute before:inset-1
+             before:rounded-full before:bg-white
+             checked:before:bg-indigo-600"
+        />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <CheckListIcon />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-[#4F46E5]">As Needed</div>
+          <p className="mt-1 text-gray-500">Flexible hours, on my own time.</p>
+        </div>
+      </label>
 
-
-        </Form>
-    )
+      {/* ERROR MESSAGE */}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+    </form>
+  );
 }
