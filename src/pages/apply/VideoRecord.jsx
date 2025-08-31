@@ -179,7 +179,7 @@ export default function VideoRecord() {
     )}`;
 
   return (
-    <div className="h-dvh w-full gap-0 p-5 pt-0 lg:p-[4.2vh]">
+    <div className="h-screen lg:h-dvh w-full gap-0 p-5 pt-0 lg:p-[4.2vh]">
       <div className="max-w-6xl lg:max-w-none lg:w-[70vw] mx-auto h-full flex flex-col">
         <div className="flex items-center justify-between sticky z-[10] top-0 pt-5 lg:pt-0 bg-white">
           <img src={logo} alt="Blockforgex" className="w-[18vh]" />

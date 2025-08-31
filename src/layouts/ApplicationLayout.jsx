@@ -217,7 +217,7 @@ export default function ApplicationLayout() {
   const meta = STEP_LEFT[step] ?? STEP_LEFT[1];
 
   return (
-    <div className="h-[100dvh] grid grid-cols-1 lg:grid-cols-2 lg:p-[4.2vh]">
+    <div className="h-[100vh] lg:h-[100dvh] grid grid-cols-1 lg:grid-cols-2 lg:p-[4.2vh]">
       {isDesktop && (
         <aside className="bg-[#F9F9FD] ">
           <div className="min-h-full p-[4.2vh] flex flex-col justify-between">
