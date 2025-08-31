@@ -53,8 +53,8 @@
   }
 
   .rf-input.ant-input {
-    padding-block: 16px !important;
-    padding-inline: 32px !important;
+    padding-block: 1.65vh !important;
+    padding-inline: 2.4vh !important;
     border-radius: 12px !important;
     border: 1px solid #e6e6e6 !important;
     height: auto !important;

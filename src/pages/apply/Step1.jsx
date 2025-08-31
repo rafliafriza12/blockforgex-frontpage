@@ -43,11 +43,12 @@ export default function Step1({ onNext, setSubmitter }) {
         jobStatus: app.jobStatus ?? "active",
         consents: app.consents ?? [],
       }}
-      className="[&_.ant-form-item-label>label]:font-medium h-full flex flex-col  lg:gap-0 lg:justify-between"
+      className="[&_.ant-form-item-label>label]:font-medium lg:[&_.ant-form-item-label>label]:!text-[1.68vh]  !h-full flex flex-col  lg:!gap-0 lg:justify-between lg:[&_.ant-input]:!text-[1.65vh] lg:[&_.ant-input]:!h-[1.65vh] lg:[&_.ant-radio-button-wrapper]:!text-[1.65vh]"
     >
       <Form.Item
         label="Full Name"
         name="fullName"
+        className="lg:!mb-[2.8vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[{ required: true, message: "Full name is required" }]}
       >
         <Input className="rf-input relative z-[0]" placeholder="Zen Nakano" />
@@ -56,6 +57,7 @@ export default function Step1({ onNext, setSubmitter }) {
       <Form.Item
         label="Email"
         name="email"
+        className="lg:!mb-[2.8vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[
           { required: true, message: "Email is required" },
           { type: "email", message: "Invalid email" },
@@ -70,30 +72,30 @@ export default function Step1({ onNext, setSubmitter }) {
       <Form.Item
         label="Job Search Status"
         name="jobStatus"
+        className="lg:!mb-[2.8vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[{ required: true, message: "Please choose one" }]}
       >
         <Radio.Group className="rf-radio w-full relative z-[0]">
           <div className="flex flex-wrap w-full gap-4">
             <Radio.Button
               value="active"
-              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 !rounded-xl !whitespace-wrap !text-center"
+              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 lg:!py-[2vh] !rounded-xl !whitespace-wrap !text-center"
             >
               <JobSearchIcon
-                size={20}
                 color="currentColor"
-                className="align-middle"
+                className="align-middle w-5 h-5 lg:w-[2vh] lg:h-[2.4vh]"
               />
               <span>Actively looking for a job.</span>
             </Radio.Button>
 
             <Radio.Button
               value="casual"
-              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 !rounded-xl !whitespace-wrap !text-center"
+              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 lg:!py-[2vh] !rounded-xl !whitespace-wrap !text-center"
             >
               <DashboardBrowsingIcon
                 size={20}
                 color="currentColor"
-                className="align-middle"
+                className="align-middle w-5 h-5 lg:w-[2vh] lg:h-[2.4vh]"
               />
               <span>Casually browsing.</span>
             </Radio.Button>
@@ -103,15 +105,16 @@ export default function Step1({ onNext, setSubmitter }) {
 
       <Card
         variant="borderless"
-        className="rounded-xl bg-gray-50/70 lg:border lg:border-gray-200 [&_.ant-card-body]:!p-0 lg:[&_.ant-card-body]:!p-6"
+        className="rounded-xl bg-gray-50/70 lg:border lg:border-gray-200 [&_.ant-card-body]:!p-0 lg:[&_.ant-card-body]:!p-[2.1vh]"
       >
-        <Text className="text-[#4B5563] font-medium">
+        <Text className="text-[#4B5563] font-medium lg:!text-[1.8vh] ">
           For evaluation and communication purposes in line with privacy policy
           and cookie policy, I consent to:
         </Text>
-        <div className="h-3" />
+        {/* <div className="h-3" /s> */}
         <Form.Item
           name="consents"
+          className="lg:[&_.ant-form-item-explain-error]:!text-sm !mt-4 lg:!mt-[1vh]"
           rules={[
             {
               type: "array",
@@ -121,17 +124,23 @@ export default function Step1({ onNext, setSubmitter }) {
             },
           ]}
         >
-          <Checkbox.Group className="grid gap-3">
+          <Checkbox.Group className="grid gap-3 lg:gap-[0.8vh] [&_.ant-checkbox-inner]:!w-[2vh] [&_.ant-checkbox-inner]:!h-[2vh]">
             <Checkbox value="data">
-              The processing and storing of my submitted personal data.
+              <span className="text-sm lg:text-[1.5vh]">
+                The processing and storing of my submitted personal data.
+              </span>
             </Checkbox>
             <Checkbox value="tools">
-              The use of call recording, note-taking tools, and external
-              assessment tools.
+              <span className="text-sm lg:text-[1.5vh]">
+                The use of call recording, note-taking tools, and external
+                assessment tools.
+              </span>
             </Checkbox>
             <Checkbox value="cookies">
-              The use of cookies to improve functionality, enchange experience,
-              and analyze site usage
+              <span className="text-sm lg:text-[1.5vh]">
+                The use of cookies to improve functionality, enchange
+                experience, and analyze site usage
+              </span>
             </Checkbox>
           </Checkbox.Group>
         </Form.Item>

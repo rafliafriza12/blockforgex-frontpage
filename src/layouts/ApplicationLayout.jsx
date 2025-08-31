@@ -109,7 +109,7 @@ function LeftBottom({ cfg }) {
 
   if (cfg.type === "image" || cfg.src || cfg.image) {
     const src = cfg.src || cfg.image;
-    const notFull = cfg.notFull ? "max-h-[527px]" : "w-[580px] max-h-[435px]";
+    const notFull = cfg.notFull ? "w-[60vh]" : "w-[60vh] max-h-[435px]";
 
     if (!src) return null;
 
@@ -150,17 +150,17 @@ function LeftBottom({ cfg }) {
     return (
       <div
         className="
-        mt-8 rounded-[12px] bg-[#F2F2FD]
+         rounded-[12px] bg-[#F2F2FD]
         py-7 px-5
       "
       >
-        <Text className="!text-[#4F46E5] !font-medium !text-[20px]">
+        <Text className="!text-[#4F46E5] !font-medium !text-[2.5vh]">
           {cfg.title}
         </Text>
 
-        <ul className="mt-4 space-y-3">
+        <ul className="!mt-3 flex flex-col gap-2">
           {cfg.bullets?.map((b, i) => (
-            <li key={i} className="flex items-start gap-2">
+            <li key={i} className="flex items-start gap-4 !text-[1.9vh]">
               <CheckCircleFilled
                 style={{ color: "#22c55e" }}
                 className="mt-0.5"
@@ -175,9 +175,9 @@ function LeftBottom({ cfg }) {
 
   if (cfg.type === "testimonial") {
     return (
-      <div className="mt-8">
-        <div className="text-5xl leading-none text-gray-300">“</div>
-        <Paragraph className="!mt-2 !text-gray-700 !text-2xl">
+      <div className="">
+        <div className="text-[4.1vh] leading-none text-gray-300">“</div>
+        <Paragraph className="!mt-2 !text-gray-700 !text-[2.6vh]">
           {cfg.quote}
         </Paragraph>
         <div className="mt-4 flex items-center gap-3">
@@ -217,23 +217,23 @@ export default function ApplicationLayout() {
   const meta = STEP_LEFT[step] ?? STEP_LEFT[1];
 
   return (
-    <div className="h-[100dvh] grid grid-cols-1 lg:grid-cols-2 lg:p-10">
+    <div className="h-[100dvh] grid grid-cols-1 lg:grid-cols-2 lg:p-[4.2vh]">
       {isDesktop && (
         <aside className="bg-[#F9F9FD] ">
-          <div className="min-h-full p-10 flex flex-col justify-between">
+          <div className="min-h-full p-[4.2vh] flex flex-col justify-between">
             <div className="w-full">
-              <div className="flex items-center gap-2 mb-8 shrink-0">
-                <img src={logo} alt="Blockforgex" className="w-[166px]" />
+              <div className="flex items-center gap-2 mb-[3.8vh] shrink-0">
+                <img src={logo} alt="Blockforgex" className="w-[18vh]" />
               </div>
 
               <div className="w-full">
                 <Title
                   level={2}
-                  className="!text-[40px] !leading-[120%]  !font-semibold !tracking-normal md:!w-full overflow-hidden !mb-2"
+                  className="!text-[4.1vh] !leading-[120%] !font-semibold !tracking-normal md:!w-full overflow-hidden !mb-2"
                 >
                   {meta.title}
                 </Title>
-                <Paragraph className="!text-gray-600 !leading-[150%] !text-base">
+                <Paragraph className="!text-gray-600 !leading-[150%] !text-[1.9vh]">
                   {meta.desc}
                 </Paragraph>
               </div>

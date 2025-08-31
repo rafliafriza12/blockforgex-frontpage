@@ -60,12 +60,14 @@ export default function Step6({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
-          <Plant01Icon />
+        <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <Plant01Icon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">Beginner</div>
-          <p className="mt-1 text-gray-500">
+          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            Beginner
+          </div>
+          <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
             I can interact in a simple way, if the other person talks slowly and
             is able to cooperate.
           </p>
@@ -94,12 +96,14 @@ export default function Step6({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
-          <BulbChargingIcon />
+        <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <BulbChargingIcon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">Intermediate</div>
-          <p className="mt-1 text-gray-500">
+          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            Intermediate
+          </div>
+          <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
             I can explain my decisions and follow most instructions in text or
             speech, though I sometimes need repetition.
           </p>
@@ -128,12 +132,14 @@ export default function Step6({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
-          <Rocket01Icon />
+        <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <Rocket01Icon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">Advanced</div>
-          <p className="mt-1 text-gray-500">
+          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            Advanced
+          </div>
+          <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
             I understand and use complex language, speak on technical topics,
             and communicate spontaneously with ease.
           </p>
@@ -162,12 +168,14 @@ export default function Step6({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
-          <CrownIcon />
+        <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <CrownIcon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">Proficient</div>
-          <p className="mt-1 text-gray-500">
+          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            Proficient
+          </div>
+          <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
             I understand almost everything I hear or read and speak confidently
             with nuance in complex situations.
           </p>

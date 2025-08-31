@@ -92,7 +92,7 @@ export default function Step3({ onNext, setSubmitter }) {
       onFinish={onFinish}
       onValuesChange={onValuesChange}
       requiredMark={false}
-      className="[&_.ant-form-item-label>label]:font-medium [&_.ant-form-item]"
+      className="[&_.ant-form-item-label>label]:font-medium [&_.ant-form-item] lg:[&_.ant-form-item-label>label]:!text-[1.68vh]"
       initialValues={{
         country: app.country ?? "ID",
         state: app.state ?? "Jakarta",
@@ -103,11 +103,13 @@ export default function Step3({ onNext, setSubmitter }) {
         <Form.Item
           label="Country"
           name="country"
+          className="mb-5 lg:!mb-[4vh] lg:[&_.ant-form-item-explain-error]:!text-sm lg:[&_.ant-select-selector]:!text-[1.6vh] lg:[&_.ant-select-selection-item]:!text-[1.6vh] lg:[&_.ant-select-dropdown .ant-select-item]:!text-[1.6vh] lg:[&_.ant-select-dropdown .ant-select-item-option-content]:!text-[1.6vh]"
           rules={[{ required: true, message: "Please select your country" }]}
         >
           <Select
             className={SELECT_CX}
             options={COUNTRIES}
+            classNames=""
             dropdownMatchSelectWidth
           />
         </Form.Item>
@@ -115,6 +117,7 @@ export default function Step3({ onNext, setSubmitter }) {
         <Form.Item
           label="State"
           name="state"
+          className="mb-5 lg:!mb-[4vh] lg:[&_.ant-form-item-explain-error]:!text-sm lg:[&_.ant-select-selector]:!text-[1.6vh] lg:[&_.ant-select-selection-item]:!text-[1.6vh] lg:[&_.ant-select-selection-placeholder]:!text-[1.6vh]"
           rules={[{ required: true, message: "Please select your state" }]}
         >
           <Select
@@ -127,6 +130,7 @@ export default function Step3({ onNext, setSubmitter }) {
         <Form.Item
           label="City"
           name="city"
+          className="mb-5 lg:[&_.ant-form-item-explain-error]:!text-sm lg:[&_.ant-select-selector]:!text-[1.6vh] lg:[&_.ant-select-selection-item]:!text-[1.6vh] lg:[&_.ant-select-selection-placeholder]:!text-[1.6vh]"
           rules={[{ required: true, message: "Please select your city" }]}
         >
           <Select

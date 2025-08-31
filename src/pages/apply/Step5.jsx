@@ -56,12 +56,16 @@ export default function Step5({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
-          <ClockCircleOutlined />
+        <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <ClockCircleOutlined className="lg:!text-[2.2vh]" />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">Fulltime</div>
-          <p className="mt-1 text-gray-500">40 hours per week.</p>
+          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            Fulltime
+          </div>
+          <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
+            40 hours per week.
+          </p>
         </div>
       </label>
 
@@ -87,12 +91,16 @@ export default function Step5({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
-          <HourglassOutlined />
+        <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <HourglassOutlined className="lg:!text-[2.2vh]" />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">Part-time</div>
-          <p className="mt-1 text-gray-500">20-30 hours per week.</p>
+          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            Part-time
+          </div>
+          <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
+            20-30 hours per week.
+          </p>
         </div>
       </label>
 
@@ -118,12 +126,16 @@ export default function Step5({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
-          <CheckListIcon />
+        <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-[#F4F4FB] text-black text-2xl">
+          <CheckListIcon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">As Needed</div>
-          <p className="mt-1 text-gray-500">Flexible hours, on my own time.</p>
+          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            As Needed
+          </div>
+          <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
+            Flexible hours, on my own time.
+          </p>
         </div>
       </label>
 

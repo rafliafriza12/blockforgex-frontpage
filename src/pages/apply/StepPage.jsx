@@ -68,8 +68,8 @@ export default function StepPage({ total = 7 }) {
 
   return (
     <>
-      <section className="lg:h-full flex flex-col justify-start gap-5 lg:gap-0 lg:justify-between  p-5 pt-0 pb-[45%]  lg:p-10 ">
-        <div className="flex flex-col gap-5 sticky top-0 pt-5 lg:pt-0 bg-white z-[10]">
+      <section className="lg:h-full flex flex-col justify-start gap-5 lg:gap-0 lg:justify-between  p-5 pt-0 pb-[45%]  lg:p-[4.2vh] ">
+        <div className="flex flex-col gap-5 lg:gap-[2.1vh] sticky top-0 pt-5 lg:pt-0 bg-white z-[10]">
           {!isDesktop && (
             <div className="flex items-center justify-between ">
               <img src={logo} alt="Blockforgex" className="h-11" />
@@ -85,16 +85,21 @@ export default function StepPage({ total = 7 }) {
           )}
 
           <div className="flex items-center justify-between">
-            <Text className="!text-sm lg:!text-2xl !font-medium  tracking-[0.13em] text-center !text-[#4F46E5]">
+            <Text className="!text-sm lg:!text-[2.4vh] !font-medium  tracking-[0.4vh] text-center !text-[#4F46E5]">
               STEP {n} OF {total}
             </Text>
 
             {fullName && n > 1 && isDesktop && (
               <div className="flex items-center gap-2">
-                <Avatar size={28} className="rf-avatar-initials">
+                <Avatar
+                  size={28}
+                  className="rf-avatar-initials lg:!text-[1.6vh]"
+                >
                   {initials}
                 </Avatar>
-                <Text className="text-gray-600">{fullName}</Text>
+                <Text className="text-gray-600 lg:!text-[1.6vh]">
+                  {fullName}
+                </Text>
               </div>
             )}
           </div>
@@ -117,7 +122,7 @@ export default function StepPage({ total = 7 }) {
           </div>
         )}
 
-        <div className="h-auto lg:flex-[0.8] ">{body}</div>
+        <div className="h-auto lg:h-[66vh] lg:!-mt-[1vh]">{body}</div>
         <div className="hidden lg:block ">
           <div
             className={`flex flex-col-reverse gap-3 lg:flex-row lg:items-center ${
@@ -128,7 +133,7 @@ export default function StepPage({ total = 7 }) {
               onClick={prev}
               className={`${
                 n <= 1 ? "!hidden " : ""
-              } w-full lg:w-50 rf-btn-default`}
+              } w-full lg:w-[20vh] rf-btn-default !text-[1.7vh] !py-[2.1vh]`}
             >
               Back
             </Button>
@@ -136,7 +141,7 @@ export default function StepPage({ total = 7 }) {
             <Button
               type="primary"
               onClick={handleContinue}
-              className="w-full lg:w-50 rf-btn-primary"
+              className="w-full lg:w-[20vh] rf-btn-primary !text-[1.7vh] !py-[2.1vh]"
             >
               {n < total ? "Continue" : "Submit"}
             </Button>

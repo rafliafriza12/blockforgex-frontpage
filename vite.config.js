@@ -10,4 +10,7 @@ export default defineConfig({
     outDir: "dist",
     assetsDir: "assets",
   },
+  server: {
+    allowedHosts: ["69b2036e101a.ngrok-free.app"],
+  },
 });

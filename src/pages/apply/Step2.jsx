@@ -27,7 +27,7 @@ export default function Step2({ onNext, setSubmitter }) {
 
   return (
     <form
-      className="w-full flex flex-col gap-4"
+      className="w-full flex flex-col gap-4 lg:mt-3"
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit();
@@ -35,7 +35,7 @@ export default function Step2({ onNext, setSubmitter }) {
     >
       {/* INDIVIDUAL */}
       <label
-        className={`relative w-full rounded-xl border p-4 flex items-start gap-3 cursor-pointer ${
+        className={`relative w-full rounded-xl border p-4 flex items-center gap-3 cursor-pointer ${
           businessType === "individual"
             ? "border-indigo-600 bg-indigo-50 shadow-inner"
             : "border-gray-300 bg-white"
@@ -55,23 +55,25 @@ export default function Step2({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-          <span className="text-xl">👜</span>
-        </div>
-        <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5]">
-            Independent Freelancer & Contractor
+        <div className="flex gap-3">
+          <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
+            <span className="text-xl lg:text-[1.4vh]">👜</span>
           </div>
-          <p className="mt-1 text-gray-500">
-            Providing reliable, flexible, and high-quality support for your
-            projects.
-          </p>
+          <div className="flex-1">
+            <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+              Independent Freelancer & Contractor
+            </div>
+            <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
+              Providing reliable, flexible, and high-quality support for your
+              projects.
+            </p>
+          </div>
         </div>
       </label>
 
       {/* COMPANY */}
       <label
-        className={`relative w-full rounded-xl border p-4 flex items-start gap-3 cursor-pointer ${
+        className={`relative w-full rounded-xl border p-4 flex items-center gap-3 cursor-pointer ${
           businessType === "company"
             ? "border-indigo-600 bg-indigo-50 shadow-inner"
             : "border-gray-300 bg-white"
@@ -91,17 +93,19 @@ export default function Step2({ onNext, setSubmitter }) {
              before:rounded-full before:bg-white
              checked:before:bg-indigo-600"
         />
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
-          <span className="text-xl">🏢</span>
-        </div>
-        <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] pr-3 lg:pr-0">
-            Company / Organization Applicant
+        <div className="flex gap-3">
+          <div className="flex h-12 w-12 lg:h-[5vh] lg:w-[5vh] items-center justify-center rounded-xl border border-[#E6E6E6] bg-[#F4F4FB]">
+            <span className="text-xl lg:text-[1.4vh]">🏢</span>
           </div>
-          <p className="mt-1 text-gray-500">
-            Representing our team to deliver trusted expertise, scalable
-            solutions, and long-term collaboration.
-          </p>
+          <div className="flex-1">
+            <div className="font-semibold text-[#4F46E5] pr-3 lg:pr-0 lg:text-[1.8vh]">
+              Company / Organization Applicant
+            </div>
+            <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
+              Representing our team to deliver trusted expertise, scalable
+              solutions, and long-term collaboration.
+            </p>
+          </div>
         </div>
       </label>
 
