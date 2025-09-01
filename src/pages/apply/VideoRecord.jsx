@@ -244,9 +244,7 @@ export default function VideoRecord() {
             className="overflow-hidden rounded-2xl bg-black mx-auto"
             style={{
               height: isDesktop ? "35vh" : "300px",
-              width: isDesktop
-                ? `${35 * aspectRatio}vh`
-                : `${300 * aspectRatio}px`,
+              width: isDesktop ? `${35 * aspectRatio}vh` : `100%`,
             }}
           >
             {status === "error" && (
