@@ -4,20 +4,28 @@ import { selectApp } from "../../store";
 import { useEffect, useState } from "react";
 import { ClockCircleOutlined, HourglassOutlined } from "@ant-design/icons";
 import { CheckListIcon } from "hugeicons-react";
+import { validation } from "../../utils/validationForm";
 
-export default function Step5({ onNext, setSubmitter }) {
+export default function Step5({ formIncomplete, onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
   const [workType, setWorkType] = useState(app.workType || "");
   const [error, setError] = useState("");
 
   useEffect(() => {
+    validation(5, { workType }, formIncomplete);
+    setError("");
     setSubmitter?.(handleSubmit);
     return () => setSubmitter?.(null);
   }, [setSubmitter, workType]);
 
   const handleSubmit = () => {
-    if (!workType) {
+    if (
+      !workType ||
+      (workType !== "fulltime" &&
+        workType !== "parttime" &&
+        workType !== "asneeded")
+    ) {
       setError("Work type is required");
       return;
     }
@@ -140,7 +148,9 @@ export default function Step5({ onNext, setSubmitter }) {
       </label>
 
       {/* ERROR MESSAGE */}
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && (
+        <p className="w-full text-right text-red-500 text-sm">{error}</p>
+      )}
     </form>
   );
 }

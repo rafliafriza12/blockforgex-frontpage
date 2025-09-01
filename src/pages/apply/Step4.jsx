@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { upsert } from "../../store/appSlice";
 import { selectApp } from "../../store";
+import { validation } from "../../utils/validationForm";
 
 const fmt = (n) => {
   if (n == null || n === "") return "";
@@ -12,12 +13,13 @@ const fmt = (n) => {
 };
 const unfmt = (s) => Number(String(s || "").replace(/[^\d]/g, "")) || 0;
 
-export default function Step4({ onNext, setSubmitter }) {
+export default function Step4({ formIncomplete, onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
   const [form] = Form.useForm();
 
   useEffect(() => {
+    validation(4, form.getFieldValue(), formIncomplete);
     setSubmitter?.(form.submit);
     return () => setSubmitter?.(null);
   }, [form, setSubmitter]);
@@ -39,7 +41,8 @@ export default function Step4({ onNext, setSubmitter }) {
       layout="vertical"
       onFinish={onFinish}
       requiredMark={false}
-      className="[&_.ant-form-item-label>label]:font-medium lg:[&_.ant-form-item-label>label]:!text-[1.68vh] lg:[&_.ant-input]:!text-[1.9vh]"
+      onValuesChange={() => validation(4, form.getFieldValue(), formIncomplete)}
+      className="[&_.ant-form-item-label>label]:font-medium lg:[&_.ant-form-item-label>label]:!text-[1.68vh] lg:[&_.ant-input]:!text-[1.9vh] "
       initialValues={{
         // tampilkan terformat jika sebelumnya sudah ada di redux
         minMonthlyRate: app.minMonthlyRate ? fmt(app.minMonthlyRate) : "",
@@ -48,6 +51,7 @@ export default function Step4({ onNext, setSubmitter }) {
       <Form.Item
         label="I want to earn per month (full-time, before tax, USD)"
         name="minMonthlyRate"
+        validateFirst
         className="lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[
           { required: true, message: "Please enter your monthly rate" },
@@ -65,6 +69,11 @@ export default function Step4({ onNext, setSubmitter }) {
           className="rf-input conversion"
           placeholder="1,000"
           inputMode="numeric"
+          onChange={(e) => {
+            let onlyNums = e.target.value.replace(/\D/g, "");
+            onlyNums = onlyNums.replace(/^0+/, "");
+            form.setFieldsValue({ minMonthlyRate: onlyNums });
+          }}
           onBlur={onBlurFormat}
           prefix={<span className="text-[#1F2937] font-semibold pl-8">$</span>}
           suffix={<span className="text-[#1F293780] pr-8">/month</span>}

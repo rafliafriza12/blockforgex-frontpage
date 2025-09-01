@@ -66,7 +66,7 @@ export default function VideoHelp() {
           <div className="hidden lg:block" />
         </div>
 
-        <div className="mt-8 lg:mt-[3vh] mx-auto w-full max-w-2xl lg:max-w-none lg:w-[35vw] rounded-2xl shadow-sm bg-black">
+        <div className="mt-8 lg:mt-[3vh] mx-auto w-full max-w-2xl lg:max-w-none lg:w-[30vw] rounded-2xl shadow-sm bg-black">
           <div className="overflow-hidden rounded-2xl">
             <video
               controls

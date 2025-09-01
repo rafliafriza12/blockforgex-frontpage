@@ -2,25 +2,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { upsert } from "../../store/appSlice";
 import { selectApp } from "../../store";
 import { useEffect, useState } from "react";
+import { validation } from "../../utils/validationForm";
 
-export default function Step2({ onNext, setSubmitter }) {
+export default function Step2({ formIncomplete, onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
   const [businessType, setBusinessType] = useState(app.businessType || "");
   const [error, setError] = useState("");
 
   const handleSubmit = () => {
-    if (!businessType) {
+    if (businessType !== "individual" && businessType !== "company") {
       setError("Business type is required");
       return;
     }
     setError(""); // reset error kalau valid
-    dispatch(upsert({ businessType }));
+    dispatch(upsert({ businessType: businessType }));
     onNext();
   };
 
   // simpan submitter
   useEffect(() => {
+    setError("");
+    validation(2, { businessType: businessType }, formIncomplete);
     setSubmitter?.(handleSubmit);
     return () => setSubmitter?.(null);
   }, [setSubmitter, businessType]);
@@ -45,6 +48,7 @@ export default function Step2({ onNext, setSubmitter }) {
           type="radio"
           name="businessType"
           value="individual"
+          required
           checked={businessType === "individual"}
           onChange={(e) => setBusinessType(e.target.value)}
           className="absolute top-4 right-4 h-5 w-5 
@@ -110,7 +114,9 @@ export default function Step2({ onNext, setSubmitter }) {
       </label>
 
       {/* ERROR MESSAGE */}
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && (
+        <p className="w-full text-right text-red-500 text-sm">{error}</p>
+      )}
     </form>
   );
 }

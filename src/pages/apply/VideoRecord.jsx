@@ -32,6 +32,7 @@ export default function VideoRecord() {
   const [deviceIdx, setDeviceIdx] = useState(0);
   const [blobURL, setBlobURL] = useState("");
   const [sec, setSec] = useState(0);
+  const [aspectRatio, setAspectRatio] = useState(16 / 9);
 
   const attachStream = useCallback(async () => {
     const v = videoRef.current;
@@ -65,6 +66,13 @@ export default function VideoRecord() {
         };
         const stream = await navigator.mediaDevices.getUserMedia(constraints);
         streamRef.current = stream;
+
+        const track = stream.getVideoTracks()[0];
+        const settings = track.getSettings();
+        if (settings.width && settings.height) {
+          const ratio = settings.width / settings.height;
+          setAspectRatio(ratio);
+        }
 
         const list = (await navigator.mediaDevices.enumerateDevices()).filter(
           (d) => d.kind === "videoinput"
@@ -231,11 +239,19 @@ export default function VideoRecord() {
           <div className="hidden lg:block" />
         </div>
 
-        <div className="mt-8 lg:mt-[3vh] mx-auto w-full max-w-2xl lg:max-w-none lg:w-[35vw] rounded-2xl shadow-sm bg-black relative">
-          <div className="overflow-hidden rounded-2xl">
+        <div className="mt-8 lg:mt-[3vh] mx-auto rounded-2xl shadow-sm bg-black relative">
+          <div
+            className="overflow-hidden rounded-2xl bg-black mx-auto"
+            style={{
+              height: isDesktop ? "35vh" : "300px",
+              width: isDesktop
+                ? `${35 * aspectRatio}vh`
+                : `${300 * aspectRatio}px`,
+            }}
+          >
             {status === "error" && (
-              <div className="h-[300px] lg:h-[30vh] flex flex-col items-center justify-center text-white px-2.5">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FB2626] mb-3">
+              <div className="flex flex-col items-center justify-center w-full h-full text-white px-2.5">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FB2626] mb-3 relative">
                   <VideoCameraOutlined style={{ position: "absolute" }} />
                   <StopOutlined
                     style={{
@@ -262,7 +278,7 @@ export default function VideoRecord() {
             )}
 
             {status === "init" && (
-              <div className="h-[300px] lg:h-[30vh] flex flex-col items-center justify-center text-white">
+              <div className="flex flex-col items-center justify-center w-full h-full text-white">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500/20 mb-3">
                   <CameraOutlined className="text-yellow-400 text-2xl" />
                 </div>
@@ -273,7 +289,7 @@ export default function VideoRecord() {
             )}
 
             {(status === "ready" || status === "recording") && (
-              <div className="relative h-[300px] lg:h-[30vh]">
+              <div className="relative w-full h-full">
                 <video
                   ref={videoRef}
                   className="block w-full h-full object-contain bg-black"
@@ -284,9 +300,9 @@ export default function VideoRecord() {
                     <button
                       type="button"
                       onClick={switchCamera}
-                      onMouseDown={(e) => e.preventDefault()} // ⬅︎ cegah focus saat klik mouse
+                      onMouseDown={(e) => e.preventDefault()}
                       className="pointer-events-auto absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 shadow flex items-center justify-center
-                                                   focus:outline-none focus:ring-0 focus-visible:outline-none"
+                         focus:outline-none focus:ring-0 focus-visible:outline-none"
                       style={{
                         outline: "none",
                         WebkitTapHighlightColor: "transparent",
@@ -349,7 +365,7 @@ export default function VideoRecord() {
               <video
                 controls
                 src={blobURL}
-                className="block w-full h-[300px] lg:h-[30vh] object-contain bg-black"
+                className="block w-full h-full object-contain bg-black"
               />
             )}
           </div>

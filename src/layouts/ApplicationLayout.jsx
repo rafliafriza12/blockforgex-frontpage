@@ -109,7 +109,7 @@ function LeftBottom({ cfg }) {
 
   if (cfg.type === "image" || cfg.src || cfg.image) {
     const src = cfg.src || cfg.image;
-    const notFull = cfg.notFull ? "w-[60vh]" : "w-[60vh] max-h-[435px]";
+    const notFull = cfg.notFull ? "w-[32vw]" : "w-[32vw]  ";
 
     if (!src) return null;
 
@@ -222,7 +222,7 @@ export default function ApplicationLayout() {
         <aside className="bg-[#F9F9FD] ">
           <div className="min-h-full p-[4.2vh] flex flex-col justify-between">
             <div className="w-full">
-              <div className="flex items-center gap-2 mb-[3.8vh] shrink-0">
+              <div className="flex items-center  mb-[3.8vh] shrink-0">
                 <img src={logo} alt="Blockforgex" className="w-[18vh]" />
               </div>
 

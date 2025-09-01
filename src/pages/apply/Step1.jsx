@@ -6,15 +6,16 @@ import { useEffect } from "react";
 import { FileSearchOutlined, GlobalOutlined } from "@ant-design/icons";
 import { JobSearchIcon } from "hugeicons-react";
 import { DashboardBrowsingIcon } from "hugeicons-react";
-
+import { validation } from "../../utils/validationForm";
 const { Text } = Typography;
 
-export default function Step1({ onNext, setSubmitter }) {
+export default function Step1({ formIncomplete, onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
   const [form] = Form.useForm();
 
   useEffect(() => {
+    validation(1, app, formIncomplete);
     setSubmitter?.(form.submit);
     return () => setSubmitter?.(null);
   }, [form, setSubmitter]);
@@ -37,6 +38,9 @@ export default function Step1({ onNext, setSubmitter }) {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       requiredMark={false}
+      onValuesChange={(_, allValues) =>
+        validation(1, allValues, formIncomplete)
+      }
       initialValues={{
         fullName: app.fullName,
         email: app.email,

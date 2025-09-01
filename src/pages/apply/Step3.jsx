@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { upsert } from "../../store/appSlice";
 import { selectApp } from "../../store";
+import { validation } from "../../utils/validationForm";
 
 const COUNTRIES = [
   {
@@ -55,32 +56,41 @@ const SELECT_CX = [
   "[&_.ant-select-arrow]:!-translate-y-1/2",
 ].join(" ");
 
-export default function Step3({ onNext, setSubmitter }) {
+export default function Step3({ formIncomplete, onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
   const [form] = Form.useForm();
 
+  // cek validasi pertama kali saat mount
   useEffect(() => {
+    validation(3, form.getFieldsValue(), formIncomplete);
     setSubmitter?.(form.submit);
+
     return () => setSubmitter?.(null);
   }, [form, setSubmitter]);
 
+  // handle submit form
   const onFinish = (values) => {
     dispatch(upsert(values));
     onNext?.();
   };
 
-  const onValuesChange = (changed) => {
-    if ("country" in changed) {
+  // handle perubahan field form
+  const onValuesChange = (changedValues) => {
+    if ("country" in changedValues) {
       form.setFieldsValue({ state: undefined, city: undefined });
-    } else if ("state" in changed) {
+    } else if ("state" in changedValues) {
       form.setFieldsValue({ city: undefined });
     }
+
+    validation(3, form.getFieldValue(), formIncomplete);
   };
 
+  // ambil daftar state & city sesuai pilihan
   const states =
     STATES_BY_COUNTRY[form.getFieldValue("country") || app.country || "ID"] ??
     [];
+
   const cities =
     CITIES_BY_STATE[form.getFieldValue("state") || app.state || "Jakarta"] ??
     [];

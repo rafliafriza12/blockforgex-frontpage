@@ -8,25 +8,34 @@ import {
   Rocket01Icon,
   CrownIcon,
 } from "hugeicons-react";
+import { validation } from "../../utils/validationForm";
 
-export default function Step6({ onNext, setSubmitter }) {
+export default function Step6({ formIncomplete, onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
-  const [level, setLevel] = useState(app.businessType || "");
+  const [level, setLevel] = useState(app.englishLevel || "");
   const [error, setError] = useState("");
 
   useEffect(() => {
+    validation(6, { level }, formIncomplete);
+    setError("");
     setSubmitter?.(handleSubmit);
     return () => setSubmitter?.(null);
   }, [setSubmitter, level]);
 
   const handleSubmit = () => {
-    if (!level) {
+    if (
+      !level ||
+      (level !== "beginner" &&
+        level !== "intermediate" &&
+        level !== "advanced" &&
+        level !== "proficient")
+    ) {
       setError("Level is required");
       return;
     }
     setError(""); // reset error
-    dispatch(upsert({ businessType: level }));
+    dispatch(upsert({ englishLevel: level }));
     onNext();
   };
 
@@ -183,7 +192,9 @@ export default function Step6({ onNext, setSubmitter }) {
       </label>
 
       {/* ERROR MESSAGE */}
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && (
+        <p className="w-full text-right text-red-500 text-sm">{error}</p>
+      )}
     </form>
   );
 }

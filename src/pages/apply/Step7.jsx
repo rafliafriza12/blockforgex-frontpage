@@ -4,20 +4,28 @@ import { upsert } from "../../store/appSlice";
 import { selectApp } from "../../store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { validation } from "../../utils/validationForm";
 
-export default function Step7({ setSubmitter }) {
+export default function Step7({ formIncomplete, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
+    validation(7, form.getFieldValue(), formIncomplete);
     setSubmitter?.(form.submit);
     return () => setSubmitter?.(null);
   }, [form, setSubmitter]);
 
   const onFinish = (values) => {
-    dispatch(upsert(values));
+    dispatch(
+      upsert({
+        linkedin: values.linkedin,
+        github: values?.github ?? "",
+        customLink: values?.customLink ?? "",
+      })
+    );
     navigate("/apply/video");
   };
 
@@ -27,6 +35,9 @@ export default function Step7({ setSubmitter }) {
       layout="vertical"
       onFinish={onFinish}
       requiredMark={false}
+      onValuesChange={(_, allValues) =>
+        validation(7, allValues, formIncomplete)
+      }
       initialValues={{
         linkedin: app.linkedin || "",
         github: app.github || "",
@@ -57,7 +68,7 @@ export default function Step7({ setSubmitter }) {
         name="github"
         rules={[
           {
-            required: true,
+            required: false,
             message: "Github / Gitlab / Bitbucket URL is required",
           },
           { type: "url", message: "Invalid URL" },
@@ -73,7 +84,7 @@ export default function Step7({ setSubmitter }) {
         label="Custom Link"
         name="customLink"
         rules={[
-          { required: true, message: "Custom Link is required" },
+          { required: false, message: "Custom Link is required" },
           { type: "url", message: "Invalid URL" },
         ]}
       >

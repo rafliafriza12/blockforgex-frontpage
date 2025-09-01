@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 import { Typography, Button, Space, Avatar } from "antd";
 import { useSelector } from "react-redux";
@@ -20,6 +20,7 @@ const { Text } = Typography;
 export default function StepPage({ total = 7 }) {
   const isDesktop = useIsDesktop();
   const { leftMeta } = useOutletContext() || {};
+  const [formInclomplete, setFormIncomplete] = useState(true);
 
   const { fullName } = useSelector(selectApp);
   const initials = getInitials(fullName);
@@ -48,21 +49,68 @@ export default function StepPage({ total = 7 }) {
     const setSubmitter = (fn) => (submitRef.current = fn);
     switch (n) {
       case 1:
-        return <Step1 onNext={next} setSubmitter={setSubmitter} />;
+        return (
+          <Step1
+            formIncomplete={setFormIncomplete}
+            onNext={next}
+            setSubmitter={setSubmitter}
+          />
+        );
       case 2:
-        return <Step2 onNext={next} setSubmitter={setSubmitter} />;
+        return (
+          <Step2
+            formIncomplete={setFormIncomplete}
+            onNext={next}
+            setSubmitter={setSubmitter}
+          />
+        );
       case 3:
-        return <Step3 onNext={next} setSubmitter={setSubmitter} />;
+        return (
+          <Step3
+            formIncomplete={setFormIncomplete}
+            onNext={next}
+            setSubmitter={setSubmitter}
+          />
+        );
       case 4:
-        return <Step4 onNext={next} setSubmitter={setSubmitter} />;
+        return (
+          <Step4
+            formIncomplete={setFormIncomplete}
+            onNext={next}
+            setSubmitter={setSubmitter}
+          />
+        );
       case 5:
-        return <Step5 onNext={next} setSubmitter={setSubmitter} />;
+        return (
+          <Step5
+            formIncomplete={setFormIncomplete}
+            onNext={next}
+            setSubmitter={setSubmitter}
+          />
+        );
       case 6:
-        return <Step6 onNext={next} setSubmitter={setSubmitter} />;
+        return (
+          <Step6
+            formIncomplete={setFormIncomplete}
+            onNext={next}
+            setSubmitter={setSubmitter}
+          />
+        );
       case 7:
-        return <Step7 setSubmitter={setSubmitter} />;
+        return (
+          <Step7
+            formIncomplete={setFormIncomplete}
+            setSubmitter={setSubmitter}
+          />
+        );
       default:
-        return <Step1 onNext={next} setSubmitter={setSubmitter} />;
+        return (
+          <Step1
+            formIncomplete={setFormIncomplete}
+            onNext={next}
+            setSubmitter={setSubmitter}
+          />
+        );
     }
   }, [n]);
 
@@ -140,6 +188,7 @@ export default function StepPage({ total = 7 }) {
 
             <Button
               type="primary"
+              disabled={formInclomplete}
               onClick={handleContinue}
               className="w-full lg:w-[20vh] rf-btn-primary !text-[1.7vh] !py-[2.1vh]"
             >
@@ -165,6 +214,7 @@ export default function StepPage({ total = 7 }) {
 
           <Button
             type="primary"
+            disabled={formInclomplete}
             onClick={handleContinue}
             className="w-full lg:w-50 rf-btn-primary"
           >

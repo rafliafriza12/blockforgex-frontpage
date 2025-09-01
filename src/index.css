@@ -10,6 +10,15 @@
     display: block;
     background-color: white;
   }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    background-color: theme("colors.white") !important;
+    -webkit-box-shadow: 0 0 0px 1000px theme("colors.white") inset !important;
+    -webkit-text-fill-color: theme("colors.gray.900") !important;
+    caret-color: theme("colors.gray.900") !important;
+    transition: background-color 0s ease-in-out 0s !important;
+  }
 }
 @layer components {
   .rf-radio .ant-radio-button-wrapper.rf-pill {
@@ -209,6 +218,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.ant-form-item .ant-form-item-explain-error {
+  position: absolute;
+  right: 0;
+  bottom: 0px; /* sesuaikan jarak */
+  text-align: right;
+  font-size: 14px;
+}
+.ant-form-item {
+  position: relative; /* wajib supaya absolute bekerja */
 }
 
 a {
