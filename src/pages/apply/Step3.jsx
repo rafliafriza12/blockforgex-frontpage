@@ -9,7 +9,7 @@ const COUNTRIES = [
   {
     value: "ID",
     label: (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 lg:text-[1.68vh]">
         <span>🇮🇩</span>
         <span>Indonesia</span>
       </div>
@@ -19,27 +19,120 @@ const COUNTRIES = [
 
 const STATES_BY_COUNTRY = {
   ID: [
-    { value: "Jakarta", label: "Jakarta" },
-    { value: "West Java", label: "West Java" },
-    { value: "Bali", label: "Bali" },
+    {
+      value: "Jakarta",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Jakarta</span>
+        </div>
+      ),
+    },
+    {
+      value: "West Java",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>West Java</span>
+        </div>
+      ),
+    },
+    {
+      value: "Bali",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Bali</span>
+        </div>
+      ),
+    },
   ],
 };
 
 const CITIES_BY_STATE = {
   Jakarta: [
-    { value: "South Jakarta", label: "South Jakarta" },
-    { value: "Central Jakarta", label: "Central Jakarta" },
-    { value: "East Jakarta", label: "East Jakarta" },
-    { value: "West Jakarta", label: "West Jakarta" },
-    { value: "North Jakarta", label: "North Jakarta" },
+    {
+      value: "South Jakarta",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>South Jakarta</span>
+        </div>
+      ),
+    },
+    {
+      value: "Central Jakarta",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Central Jakarta</span>
+        </div>
+      ),
+    },
+    {
+      value: "East Jakarta",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>East Jakarta</span>
+        </div>
+      ),
+    },
+    {
+      value: "West Jakarta",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>West Jakarta</span>
+        </div>
+      ),
+    },
+    {
+      value: "North Jakarta",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>North Jakarta</span>
+        </div>
+      ),
+    },
   ],
   "West Java": [
-    { value: "Bandung", label: "Bandung" },
-    { value: "Bekasi", label: "Bekasi" },
-    { value: "Bogor", label: "Bogor" },
-    { value: "Depok", label: "Depok" },
+    {
+      value: "Bandung",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Bandung</span>
+        </div>
+      ),
+    },
+    {
+      value: "Bekasi",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Bekasi</span>
+        </div>
+      ),
+    },
+    {
+      value: "Bogor",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Bogor</span>
+        </div>
+      ),
+    },
+    {
+      value: "Depok",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Depok</span>
+        </div>
+      ),
+    },
   ],
-  Bali: [{ value: "Denpasar", label: "Denpasar" }],
+  Bali: [
+    {
+      value: "Denpasar",
+      label: (
+        <div className="lg:text-[1.68vh]">
+          <span>Denpasar</span>
+        </div>
+      ),
+    },
+  ],
 };
 
 const SELECT_CX = [
@@ -120,6 +213,22 @@ export default function Step3({ formIncomplete, onNext, setSubmitter }) {
             className={SELECT_CX}
             options={COUNTRIES}
             classNames=""
+            suffixIcon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 lg:w-[2vh] lg:h-[2vh] text-[#1F2937]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            }
             dropdownMatchSelectWidth
           />
         </Form.Item>
@@ -133,6 +242,22 @@ export default function Step3({ formIncomplete, onNext, setSubmitter }) {
           <Select
             className={SELECT_CX}
             options={states}
+            suffixIcon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 lg:w-[2vh] lg:h-[2vh] text-[#1F2937]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            }
             dropdownMatchSelectWidth
           />
         </Form.Item>
@@ -146,6 +271,22 @@ export default function Step3({ formIncomplete, onNext, setSubmitter }) {
           <Select
             className={SELECT_CX}
             options={cities}
+            suffixIcon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 lg:w-[2vh] lg:h-[2vh] text-[#1F2937]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            }
             dropdownMatchSelectWidth
           />
         </Form.Item>

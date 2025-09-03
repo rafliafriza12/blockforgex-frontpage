@@ -109,7 +109,7 @@ function LeftBottom({ cfg }) {
 
   if (cfg.type === "image" || cfg.src || cfg.image) {
     const src = cfg.src || cfg.image;
-    const notFull = cfg.notFull ? "w-[32vw]" : "w-[32vw]  ";
+    const notFull = cfg.notFull ? "w-full xl:w-[31vw]" : "w-full xl:w-[31vw]";
 
     if (!src) return null;
 
@@ -181,10 +181,15 @@ function LeftBottom({ cfg }) {
           {cfg.quote}
         </Paragraph>
         <div className="mt-4 flex items-center gap-3">
-          <Avatar size={44} src={cfg.avatar} />
+          {/* <Avatar size={44} src={cfg.avatar} /> */}
+          <img
+            src={cfg.avatar}
+            alt="BlockForgex"
+            className=" w-[7vh] h-[7vh] rounded-full object-cover overflow-hidden"
+          />
           <div>
-            <Text strong>{cfg.author}</Text>
-            <div className="text-gray-500 text-sm">{cfg.role}</div>
+            <Text className="!text-[1.9vh]">{cfg.author}</Text>
+            <div className="text-gray-500 !text-[1.8vh]">{cfg.role}</div>
           </div>
         </div>
       </div>
@@ -217,7 +222,7 @@ export default function ApplicationLayout() {
   const meta = STEP_LEFT[step] ?? STEP_LEFT[1];
 
   return (
-    <div className="h-[100vh] lg:h-[100dvh] grid grid-cols-1 lg:grid-cols-2 lg:p-[4.2vh]">
+    <div className="h-[100vh] lg:h-[100dvh] grid grid-cols-1 lg:grid-cols-2 lg:p-[4.2vh] overflow-x-hidden lg:overflow-hidden">
       {isDesktop && (
         <aside className="bg-[#F9F9FD] ">
           <div className="min-h-full p-[4.2vh] flex flex-col justify-between">

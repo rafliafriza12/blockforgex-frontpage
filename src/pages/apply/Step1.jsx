@@ -52,7 +52,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
       <Form.Item
         label="Full Name"
         name="fullName"
-        className="lg:!mb-[2.8vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
+        className="lg:!mb-[1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[{ required: true, message: "Full name is required" }]}
       >
         <Input className="rf-input relative z-[0]" placeholder="Zen Nakano" />
@@ -61,7 +61,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
       <Form.Item
         label="Email"
         name="email"
-        className="lg:!mb-[2.8vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
+        className="lg:!mb-[1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[
           { required: true, message: "Email is required" },
           { type: "email", message: "Invalid email" },
@@ -76,14 +76,14 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
       <Form.Item
         label="Job Search Status"
         name="jobStatus"
-        className="lg:!mb-[2.8vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
+        className="lg:!mb-[1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[{ required: true, message: "Please choose one" }]}
       >
         <Radio.Group className="rf-radio w-full relative z-[0]">
           <div className="flex flex-wrap w-full gap-4">
             <Radio.Button
               value="active"
-              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 lg:!py-[2vh] !rounded-xl !whitespace-wrap !text-center"
+              className="rf-pill w-full md:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 lg:!px-2 xl:!px-4 lg:!py-[2vh] !rounded-xl !whitespace-wrap !text-center"
             >
               <JobSearchIcon
                 color="currentColor"
@@ -128,7 +128,10 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
             },
           ]}
         >
-          <Checkbox.Group className="grid gap-3 lg:gap-[0.8vh] [&_.ant-checkbox-inner]:!w-[2vh] [&_.ant-checkbox-inner]:!h-[2vh]">
+          <Checkbox.Group
+            className="grid gap-3 lg:gap-[0.8vh] [&_.ant-checkbox-inner]:!w-[2vh] [&_.ant-checkbox-inner]:!h-[2vh] [&_.ant-checkbox-checked_.ant-checkbox-inner]:!bg-[#4F46E5]/10
+    [&_.ant-checkbox-checked_.ant-checkbox-inner]:!border-[#4F46E5] [&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!border-[#4F46E5] lg:[&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!w-[0.5vh] lg:[&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!h-[1vh] "
+          >
             <Checkbox value="data">
               <span className="text-sm lg:text-[1.5vh]">
                 The processing and storing of my submitted personal data.

@@ -117,7 +117,7 @@ export default function StepPage({ total = 7 }) {
   return (
     <>
       <section className="lg:h-full flex flex-col justify-start gap-5 lg:gap-0 lg:justify-between  p-5 pt-0 pb-[45%]  lg:p-[4.2vh] ">
-        <div className="flex flex-col gap-5 lg:gap-[2.1vh] sticky top-0 pt-5 lg:pt-0 bg-white z-[10]">
+        <div className="flex flex-col gap-5 lg:gap-[1.7vh] xl:gap-[1.8vh] sticky top-0 pt-5 lg:pt-0 bg-white z-[10]">
           {!isDesktop && (
             <div className="flex items-center justify-between ">
               <img src={logo} alt="Blockforgex" className="h-11" />
@@ -145,7 +145,7 @@ export default function StepPage({ total = 7 }) {
                 >
                   {initials}
                 </Avatar>
-                <Text className="text-gray-600 lg:!text-[1.6vh]">
+                <Text className="!text-[#4F46E5] !font-medium lg:!text-[1.6vh]">
                   {fullName}
                 </Text>
               </div>
@@ -170,7 +170,9 @@ export default function StepPage({ total = 7 }) {
           </div>
         )}
 
-        <div className="h-auto lg:h-[66vh] lg:!-mt-[1vh]">{body}</div>
+        <div className="h-auto lg:h-[60vh] xl:h-[66vh] lg:!-mt-[7vh] xl:!-mt-[1vh]">
+          {body}
+        </div>
         <div className="hidden lg:block ">
           <div
             className={`flex flex-col-reverse gap-3 lg:flex-row lg:items-center ${
