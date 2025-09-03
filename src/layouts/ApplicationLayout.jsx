@@ -30,14 +30,14 @@ const STEP_LEFT = {
       type: "image",
       src: step2Image,
       alt: "Business type illustration",
-      notFull: true,
+      notFull: false,
     },
   },
 
   3: {
     logoText: "BLOCKFORGEX",
     title: "Where are you based?",
-    desc: "Let us know your location so we can match you with opportunities that fit your region and availability.",
+    desc: "Let us know your locatmediumion so we can match you with opportunities that fit your region and availability.",
     bottom: {
       type: "testimonial",
       quote:
@@ -109,7 +109,9 @@ function LeftBottom({ cfg }) {
 
   if (cfg.type === "image" || cfg.src || cfg.image) {
     const src = cfg.src || cfg.image;
-    const notFull = cfg.notFull ? "w-full xl:w-[31vw]" : "w-full xl:w-[31vw]";
+    const notFull = cfg.notFull
+      ? "w-full xl:w-[31vw]"
+      : "w-full xl:mx-auto xl:w-[31vw] ";
 
     if (!src) return null;
 

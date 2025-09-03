@@ -52,7 +52,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
       <Form.Item
         label="Full Name"
         name="fullName"
-        className="lg:!mb-[1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
+        className="lg:!mb-[1.1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[{ required: true, message: "Full name is required" }]}
       >
         <Input className="rf-input relative z-[0]" placeholder="Zen Nakano" />
@@ -61,7 +61,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
       <Form.Item
         label="Email"
         name="email"
-        className="lg:!mb-[1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
+        className="lg:!mb-[1.1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[
           { required: true, message: "Email is required" },
           { type: "email", message: "Invalid email" },
@@ -76,7 +76,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
       <Form.Item
         label="Job Search Status"
         name="jobStatus"
-        className="lg:!mb-[1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
+        className="lg:!mb-[1.1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[{ required: true, message: "Please choose one" }]}
       >
         <Radio.Group className="rf-radio w-full relative z-[0]">
