@@ -244,7 +244,7 @@ export default function VideoRecord() {
             className="overflow-hidden rounded-2xl bg-black mx-auto"
             style={{
               height: isDesktop ? "35vh" : "300px",
-              width: isDesktop ? `${35 * aspectRatio}vh` : `100%`,
+              width: isDesktop ? `${(35 * 16) / 9}vh` : `100%`,
             }}
           >
             {status === "error" && (
@@ -259,7 +259,7 @@ export default function VideoRecord() {
                     }}
                   />
                 </div>
-                <div className="text-lg lg:text-[2vh] font-semibold">
+                <div className="text-lg lg:text-[2vh] font-medium">
                   Camera not Ready!!
                 </div>
                 <p className="text-gray-300 text-sm mt-1 text-center !text-[12px] !lg:text-[1.5vh]">
@@ -280,7 +280,7 @@ export default function VideoRecord() {
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-500/20 mb-3">
                   <CameraOutlined className="text-yellow-400 text-2xl" />
                 </div>
-                <div className="text-lg font-semibold">
+                <div className="text-lg font-medium">
                   Initializing Camera...
                 </div>
               </div>
@@ -290,7 +290,7 @@ export default function VideoRecord() {
               <div className="relative w-full h-full">
                 <video
                   ref={videoRef}
-                  className="block w-full h-full object-contain bg-black"
+                  className="block w-full h-full object-cover bg-black"
                 />
 
                 <div className="absolute inset-0 z-20 pointer-events-none">
@@ -351,7 +351,7 @@ export default function VideoRecord() {
                   </div>
 
                   {status === "recording" && (
-                    <div className="absolute left-3 bottom-3 text-white/90 font-semibold">
+                    <div className="absolute left-3 bottom-3 text-white/90 font-medium">
                       {formatTime(sec)} / 03:00
                     </div>
                   )}
@@ -363,12 +363,11 @@ export default function VideoRecord() {
               <video
                 controls
                 src={blobURL}
-                className="block w-full h-full object-contain bg-black"
+                className="block w-full h-full object-cover bg-black"
               />
             )}
           </div>
         </div>
-
         {status === "preview" && (
           <div className="mt-4 mx-auto flex items-center gap-3">
             <Button
@@ -387,8 +386,11 @@ export default function VideoRecord() {
           </div>
         )}
 
-        <div className="mx-auto mt-6 lg:mt-[3vh] w-full max-w-3xl">
-          <div className="font-semibold text-gray-800 lg:text-[2vh] mb-3">
+        <div
+          style={{ width: isDesktop ? `${(35 * 16) / 9}vh` : `100%` }}
+          className={`mx-auto mt-6 lg:mt-[3vh] w-full `}
+        >
+          <div className="font-medium text-gray-800 lg:text-[2vh] mb-3">
             Tips:
           </div>
           <ol className="space-y-2 text-sm text-gray-700 lg:text-[1.7vh]">

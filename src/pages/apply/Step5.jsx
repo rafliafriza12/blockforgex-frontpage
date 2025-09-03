@@ -68,7 +68,7 @@ export default function Step5({ formIncomplete, onNext, setSubmitter }) {
           <ClockCircleOutlined className="lg:!text-[2.2vh]" />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+          <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
             Fulltime
           </div>
           <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
@@ -103,7 +103,7 @@ export default function Step5({ formIncomplete, onNext, setSubmitter }) {
           <HourglassOutlined className="lg:!text-[2.2vh]" />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+          <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
             Part-time
           </div>
           <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
@@ -138,7 +138,7 @@ export default function Step5({ formIncomplete, onNext, setSubmitter }) {
           <CheckListIcon size={19} />
         </div>
         <div className="flex-1">
-          <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+          <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
             As Needed
           </div>
           <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">

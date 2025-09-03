@@ -75,7 +75,7 @@ export default function Step4({ formIncomplete, onNext, setSubmitter }) {
             form.setFieldsValue({ minMonthlyRate: onlyNums });
           }}
           onBlur={onBlurFormat}
-          prefix={<span className="text-[#1F2937] font-semibold pl-8">$</span>}
+          prefix={<span className="text-[#1F2937] font-medium pl-8">$</span>}
           suffix={<span className="text-[#1F293780] pr-8">/month</span>}
         />
       </Form.Item>

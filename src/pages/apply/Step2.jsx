@@ -84,7 +84,7 @@ export default function Step2({ formIncomplete, onNext, setSubmitter }) {
             </svg>
           </div>
           <div className="flex-1">
-            <div className="font-semibold text-[#4F46E5] lg:text-[1.8vh]">
+            <div className="font-medium text-[#4F46E5] lg:text-[1.8vh]">
               Independent Freelancer & Contractor
             </div>
             <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">
@@ -133,7 +133,7 @@ export default function Step2({ formIncomplete, onNext, setSubmitter }) {
             </svg>
           </div>
           <div className="flex-1">
-            <div className="font-semibold text-[#4F46E5] pr-3 lg:pr-0 lg:text-[1.8vh]">
+            <div className="font-medium text-[#4F46E5] pr-3 lg:pr-0 lg:text-[1.8vh]">
               Company / Organization Applicant
             </div>
             <p className="mt-1 text-gray-500 lg:text-[1.6vh] !mb-0">

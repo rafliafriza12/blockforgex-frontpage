@@ -79,7 +79,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
         className="lg:!mb-[1.1vh] xl:!mb-[2.1vh] lg:[&_.ant-form-item-explain-error]:!text-sm"
         rules={[{ required: true, message: "Please choose one" }]}
       >
-        <Radio.Group className="rf-radio w-full relative z-[0]">
+        <Radio.Group className="rf-radio w-full relative z-[0] [&_.ant-radio-button-wrapper-checked]:!font-medium">
           <div className="flex flex-wrap w-full gap-4">
             <Radio.Button
               value="active"
@@ -129,8 +129,8 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
           ]}
         >
           <Checkbox.Group
-            className="grid gap-3 lg:gap-[0.8vh] [&_.ant-checkbox-inner]:!w-[2vh] [&_.ant-checkbox-inner]:!h-[2vh] [&_.ant-checkbox-checked_.ant-checkbox-inner]:!bg-[#4F46E5]/10
-    [&_.ant-checkbox-checked_.ant-checkbox-inner]:!border-[#4F46E5] [&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!border-[#4F46E5] lg:[&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!w-[0.5vh] lg:[&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!h-[1vh] "
+            className="grid gap-3 lg:gap-[0.8vh] [&_.ant-checkbox-inner]:!w-[2vh] [&_.ant-checkbox-inner]:!h-[2vh] [&_.ant-checkbox-checked_.ant-checkbox-inner]:!bg-[#4F46E5]
+    [&_.ant-checkbox-checked_.ant-checkbox-inner]:!border-[#4F46E5] [&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!border-[#ffffff] "
           >
             <Checkbox value="data">
               <span className="text-sm lg:text-[1.5vh]">

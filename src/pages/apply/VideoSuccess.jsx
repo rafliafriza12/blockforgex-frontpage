@@ -59,7 +59,7 @@ export default function VideoSuccess() {
 
         <div className="flex-1 flex flex-col items-center justify-start">
           <div className="w-full max-w-xl mx-auto lg:max-w-none lg:w-[30vw] ">
-            <div className="text-indigo-600 font-semibold text-center mb-8 lg:!text-[1.6vh]">
+            <div className="text-indigo-600 font-medium text-center mb-8 lg:!text-[1.6vh]">
               Your Vetting Process
             </div>
 
@@ -72,7 +72,7 @@ export default function VideoSuccess() {
                   <div className="w-1 grow bg-indigo-600"></div>
                 </div>
                 <div className="pb-6 lg:pb-[2vh]">
-                  <div className="font-semibold text-black lg:!text-[1.6vh]">
+                  <div className="font-medium text-black lg:!text-[1.6vh]">
                     Applied
                   </div>
                   <div className="text-gray-500 text-sm lg:!text-[1.4vh]">
@@ -92,7 +92,7 @@ export default function VideoSuccess() {
                   <div className="w-1 grow bg-gray-200 -mt-7"></div>
                 </div>
                 <div className="pb-6 lg:pb-[2vh]">
-                  <div className="font-semibold text-black lg:!text-[1.6vh]">
+                  <div className="font-medium text-black lg:!text-[1.6vh]">
                     Under Review
                   </div>
                   <div className="text-gray-500 text-sm  lg:!text-[1.4vh]">
@@ -108,7 +108,7 @@ export default function VideoSuccess() {
                   <div className="w-1 grow bg-gray-200 -mt-7"></div>
                 </div>
                 <div className="pb-6 lg:pb-[2vh]">
-                  <div className="font-semibold text-black lg:!text-[1.6vh]">
+                  <div className="font-medium text-black lg:!text-[1.6vh]">
                     Final Interview
                   </div>
                   <div className="text-gray-500 text-sm  lg:!text-[1.4vh]">
@@ -121,7 +121,7 @@ export default function VideoSuccess() {
                   <div className="h-7 w-7 lg:w-[3vh] lg:h-[3vh] rounded-full bg-gray-200"></div>
                 </div>
                 <div>
-                  <div className="font-semibold text-black lg:!text-[1.6vh]">
+                  <div className="font-medium text-black lg:!text-[1.6vh]">
                     Join Blockforgex
                   </div>
                   <div className="text-gray-500 text-sm  lg:!text-[1.4vh]">
@@ -136,7 +136,7 @@ export default function VideoSuccess() {
 
         <div className="w-full max-w-3xl mx-auto lg:max-w-none lg:w-[40vw] mt-8 lg:mt-[3vh] ">
           <div className="bg-gray-50 rounded-2xl p-6">
-            <div className="font-semibold mb-2 text-black lg:!text-[1.6vh]">
+            <div className="font-medium mb-2 text-black lg:!text-[1.6vh]">
               About Our Company
             </div>
             <p className="text-gray-600 lg:!text-[1.6vh]">

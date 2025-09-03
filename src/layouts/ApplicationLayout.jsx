@@ -30,7 +30,7 @@ const STEP_LEFT = {
       type: "image",
       src: step2Image,
       alt: "Business type illustration",
-      notFull: false,
+      notFull: true,
     },
   },
 
