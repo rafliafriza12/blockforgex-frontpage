@@ -10,7 +10,8 @@ const COUNTRIES = [
     value: "ID",
     label: (
       <div className="flex items-center gap-2 lg:text-[1.68vh]">
-        <span>🇮🇩</span>
+        <span className="fi fi-id"></span>
+
         <span>Indonesia</span>
       </div>
     ),
