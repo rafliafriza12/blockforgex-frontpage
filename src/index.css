@@ -305,7 +305,7 @@ button:focus-visible {
   }
 }
 @media (min-width: 1027px) and (max-width: 1279px) {
-  .text-1vw {
-    font-size: 1vw !important;
+  .layout-radio-step-1 {
+    flex-direction: column;
   }
 }

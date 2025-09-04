@@ -1,18 +1,53 @@
-import { Form, Input, Radio, Checkbox, Card, Typography, Space } from "antd";
+import { useState, useEffect } from "react";
+import { Form, Input, Radio, Checkbox, Card, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { upsert } from "../../store/appSlice";
 import { selectApp } from "../../store";
-import { useEffect } from "react";
-import { FileSearchOutlined, GlobalOutlined } from "@ant-design/icons";
-import { JobSearchIcon } from "hugeicons-react";
-import { DashboardBrowsingIcon } from "hugeicons-react";
+import { JobSearchIcon, DashboardBrowsingIcon } from "hugeicons-react";
 import { validation } from "../../utils/validationForm";
+
 const { Text } = Typography;
 
 export default function Step1({ formIncomplete, onNext, setSubmitter }) {
   const dispatch = useDispatch();
   const app = useSelector(selectApp);
   const [form] = Form.useForm();
+
+  const [isCol, setIsCol] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // ✅ cek viewport iPad Pro (portrait / landscape)
+      const isIPadProSize =
+        (width >= 1020 && width <= 1100 && height >= 1360 && height <= 1380) ||
+        (width === 1093 && height === 819) ||
+        (width >= 1360 && width <= 1380 && height >= 1020 && height <= 1100);
+
+      console.log(
+        "Width:",
+        width,
+        "Height:",
+        height,
+        "isIPadProSize:",
+        isIPadProSize
+      );
+
+      if (isIPadProSize) {
+        setIsCol(false); // 👉 iPad Pro → row
+      } else if (width >= 1024 && width <= 1279) {
+        setIsCol(true); // 👉 range normal → col
+      } else {
+        setIsCol(false); // 👉 default → row
+      }
+    };
+
+    handleResize(); // initial run
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     validation(1, app, formIncomplete);
@@ -47,8 +82,9 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
         jobStatus: app.jobStatus ?? "active",
         consents: app.consents ?? [],
       }}
-      className="[&_.ant-form-item-label>label]:font-medium lg:[&_.ant-form-item-label>label]:!text-[1.2vw] xl:[&_.ant-form-item-label>label]:!text-[1.68vh]  !h-full flex flex-col  lg:!gap-0 lg:justify-between lg:[&_.ant-input]:!text-[1.2vw] xl:[&_.ant-input]:!text-[1.65vh] lg:[&_.ant-input]:!h-[1.65vh] lg:[&_.ant-radio-button-wrapper]:!text-[1.65vh]"
+      className="[&_.ant-form-item-label>label]:font-medium lg:[&_.ant-form-item-label>label]:!text-[1.2vw] xl:[&_.ant-form-item-label>label]:!text-[1.68vh] !h-full flex flex-col lg:!gap-0 lg:justify-between lg:[&_.ant-input]:!text-[1.2vw] xl:[&_.ant-input]:!text-[1.65vh] lg:[&_.ant-input]:!h-[1.65vh] lg:[&_.ant-radio-button-wrapper]:!text-[1.65vh]"
     >
+      {/* Full Name */}
       <Form.Item
         label="Full Name"
         name="fullName"
@@ -58,6 +94,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
         <Input className="rf-input relative z-[0]" placeholder="Zen Nakano" />
       </Form.Item>
 
+      {/* Email */}
       <Form.Item
         label="Email"
         name="email"
@@ -73,6 +110,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
         />
       </Form.Item>
 
+      {/* Job Status */}
       <Form.Item
         label="Job Search Status"
         name="jobStatus"
@@ -80,10 +118,15 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
         rules={[{ required: true, message: "Please choose one" }]}
       >
         <Radio.Group className="rf-radio w-full relative z-[0] [&_.ant-radio-button-wrapper-checked]:!font-medium">
-          <div className="flex flex-wrap lg:flex-col xl:flex-row w-full gap-4">
+          <div
+            className={`flex flex-wrap w-full gap-4 ${
+              isCol ? "flex-col" : "flex-row"
+            }`}
+          >
             <Radio.Button
               value="active"
-              className="rf-pill w-full md:!w-[calc(50%-8px)] lg:!w-full xl:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 lg:!px-2 xl:!px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center"
+              className={`rf-pill !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 lg:!px-2 xl:!px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center
+    ${isCol ? "w-full" : "w-[calc(50%-8px)]"}`}
             >
               <JobSearchIcon
                 color="currentColor"
@@ -96,7 +139,8 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
 
             <Radio.Button
               value="casual"
-              className="rf-pill w-full md:!w-[calc(50%-8px)] lg:!w-full xl:!w-[calc(50%-8px)] !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center"
+              className={`rf-pill !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center
+    ${isCol ? "w-full" : "w-[calc(50%-8px)]"}`}
             >
               <DashboardBrowsingIcon
                 size={20}
@@ -111,6 +155,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
         </Radio.Group>
       </Form.Item>
 
+      {/* Consent */}
       <Card
         variant="borderless"
         className="rounded-xl bg-gray-50/70 lg:border lg:border-gray-200 [&_.ant-card-body]:!p-0 lg:[&_.ant-card-body]:!p-[2.1vh]"
@@ -119,7 +164,6 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
           For evaluation and communication purposes in line with privacy policy
           and cookie policy, I consent to:
         </Text>
-        {/* <div className="h-3" /s> */}
         <Form.Item
           name="consents"
           className="lg:[&_.ant-form-item-explain-error]:!text-sm !mt-4 lg:!mt-[1vh]"
@@ -132,10 +176,7 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
             },
           ]}
         >
-          <Checkbox.Group
-            className="grid gap-3 lg:gap-[0.8vh] [&_.ant-checkbox-inner]:!w-[2vh] [&_.ant-checkbox-inner]:!h-[2vh] [&_.ant-checkbox-checked_.ant-checkbox-inner]:!bg-[#4F46E5]
-    [&_.ant-checkbox-checked_.ant-checkbox-inner]:!border-[#4F46E5] [&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!border-[#ffffff] "
-          >
+          <Checkbox.Group className="grid gap-3 lg:gap-[0.8vh] [&_.ant-checkbox-inner]:!w-[2vh] [&_.ant-checkbox-inner]:!h-[2vh] [&_.ant-checkbox-checked_.ant-checkbox-inner]:!bg-[#4F46E5] [&_.ant-checkbox-checked_.ant-checkbox-inner]:!border-[#4F46E5] [&_.ant-checkbox-checked_.ant-checkbox-inner::after]:!border-[#ffffff]">
             <Checkbox value="data">
               <span className="text-sm xl:text-[1.5vh]">
                 The processing and storing of my submitted personal data.
