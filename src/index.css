@@ -224,7 +224,7 @@
 .ant-form-item .ant-form-item-explain-error {
   position: absolute;
   right: 0;
-  bottom: 0px; /* sesuaikan jarak */
+  bottom: -4px; /* sesuaikan jarak */
   text-align: right;
   font-size: 14px;
 }
