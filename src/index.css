@@ -96,7 +96,7 @@
     height: auto !important;
     padding: 16px 12px !important;
     border-radius: 12px !important;
-    font-weight: 600 !important;
+    font-weight: 600;
 
     background: #4f46e5 !important;
     border-color: #4f46e5 !important;
@@ -128,7 +128,7 @@
     height: auto !important;
     padding: 16px 12px !important;
     border-radius: 8px !important;
-    font-weight: 600 !important;
+    font-weight: 600;
 
     background: #ffffff !important;
     border: 1px solid #4f46e5 !important;
@@ -302,5 +302,10 @@ button:focus-visible {
 @media (max-width: 640px) {
   body {
     padding: 0 !important;
+  }
+}
+@media (min-width: 1027px) and (max-width: 1279px) {
+  .text-1vw {
+    font-size: 1vw !important;
   }
 }

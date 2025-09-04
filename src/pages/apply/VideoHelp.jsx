@@ -5,7 +5,8 @@ import { selectApp } from "../../store";
 import { getInitials } from "../../utils/name";
 import logo from "../../assets/logo-blockforgex.png";
 import useIsDesktop from "../../hooks/useIsDesktop";
-
+import videoInstructions from "../../assets/setup-instructions.mp4";
+import thumbnail from "../../assets/thumbnail.png";
 const { Title, Text } = Typography;
 
 export default function VideoHelp() {
@@ -70,9 +71,9 @@ export default function VideoHelp() {
           <div className="overflow-hidden rounded-2xl">
             <video
               controls
-              className="block w-full h-[300px] lg:h-[30vh] object-contain bg-black"
-              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-              poster="https://images.unsplash.com/photo-1520975922284-6edd46873005?q=80&w=1200&auto=format&fit=crop"
+              className="block w-full h-[300px] lg:h-[30vh] object-cover bg-black"
+              src={videoInstructions}
+              poster={thumbnail}
             />
           </div>
         </div>

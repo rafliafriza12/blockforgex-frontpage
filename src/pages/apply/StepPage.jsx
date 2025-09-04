@@ -133,7 +133,7 @@ export default function StepPage({ total = 7 }) {
           )}
 
           <div className="flex items-center justify-between">
-            <Text className="!text-sm lg:!text-[2.4vh] !font-medium  tracking-[0.4vh] text-center !text-[#4F46E5]">
+            <Text className="!text-sm lg:!text-[1.7vw] xl:!text-[2.4vh] !font-medium  tracking-[0.4vh] text-center !text-[#4F46E5]">
               STEP {n} OF {total}
             </Text>
 
@@ -170,11 +170,12 @@ export default function StepPage({ total = 7 }) {
           </div>
         )}
 
-        <div className="h-auto lg:h-[60vh] xl:h-[66vh] lg:!-mt-[7vh] xl:!-mt-[1vh]">
+        <div className="h-auto lg:h-[60vh] xl:h-[66vh] lg:!-mt-[9vh] xl:!-mt-[1vh]">
           {body}
         </div>
         <div className="hidden lg:block ">
           <div
+            style={{ fontWeight: 500 }}
             className={`flex flex-col-reverse gap-3 lg:flex-row lg:items-center ${
               n <= 1 ? "justify-end" : "lg:justify-between"
             } `}
@@ -183,18 +184,22 @@ export default function StepPage({ total = 7 }) {
               onClick={prev}
               className={`${
                 n <= 1 ? "!hidden " : ""
-              } w-full lg:w-[20vh] rf-btn-default !text-[1.7vh] !py-[2.1vh]`}
+              } w-full lg:!w-[calc(50%-8px)] xl:!w-[30%] !font-medium rf-btn-default !text-[1.7vh] !py-[2.1vh]`}
             >
-              Back
+              <span className="!text-base lg:!text-[1.3vw] xl:!text-[1.68vh]">
+                Back
+              </span>
             </Button>
 
             <Button
               type="primary"
               disabled={formInclomplete}
               onClick={handleContinue}
-              className="w-full lg:w-[20vh] rf-btn-primary !text-[1.7vh] !py-[2.1vh]"
+              className="w-full lg:!w-[calc(50%-8px)] xl:!w-[30%] !font-medium rf-btn-primary !text-[1.7vh] !py-[2.1vh]"
             >
-              {n < total ? "Continue" : "Submit"}
+              <span className="!text-base lg:!text-[1.3vw] xl:!text-[1.68vh]">
+                {n < total ? "Continue" : "Submit"}
+              </span>
             </Button>
           </div>
         </div>
@@ -204,12 +209,13 @@ export default function StepPage({ total = 7 }) {
           className={`flex flex-col-reverse gap-3 lg:flex-row lg:items-center ${
             n <= 1 ? "justify-end" : "lg:justify-between"
           } `}
+          style={{ fontWeight: 500 }}
         >
           <Button
             onClick={prev}
             className={`${
               n <= 1 ? "!hidden " : ""
-            } w-full lg:w-50 rf-btn-default`}
+            } w-full lg:w-50 rf-btn-default !font-medium`}
           >
             Back
           </Button>
@@ -218,7 +224,7 @@ export default function StepPage({ total = 7 }) {
             type="primary"
             disabled={formInclomplete}
             onClick={handleContinue}
-            className="w-full lg:w-50 rf-btn-primary"
+            className="w-full lg:w-50 rf-btn-primary !font-medium "
           >
             {n < total ? "Continue" : "Submit"}
           </Button>

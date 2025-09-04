@@ -290,7 +290,7 @@ export default function VideoRecord() {
               <div className="relative w-full h-full">
                 <video
                   ref={videoRef}
-                  className="block w-full h-full object-cover bg-black"
+                  className="block w-full h-full object-cover  rounded-2xl"
                 />
 
                 <div className="absolute inset-0 z-20 pointer-events-none">
@@ -363,7 +363,7 @@ export default function VideoRecord() {
               <video
                 controls
                 src={blobURL}
-                className="block w-full h-full object-cover bg-black"
+                className="block w-full h-full object-cover "
               />
             )}
           </div>

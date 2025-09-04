@@ -71,7 +71,7 @@ const STEP_LEFT = {
       type: "image",
       src: step5Image,
       alt: "Blockforgex hero",
-      notFull: true,
+      notFull: false,
     },
   },
 
@@ -109,9 +109,7 @@ function LeftBottom({ cfg }) {
 
   if (cfg.type === "image" || cfg.src || cfg.image) {
     const src = cfg.src || cfg.image;
-    const notFull = cfg.notFull
-      ? "w-full xl:w-[31vw]"
-      : "w-full xl:mx-auto xl:w-[31vw] ";
+    const notFull = cfg.notFull ? "w-full xl:w-[32vw]" : "w-full  xl:w-[30vw] ";
 
     if (!src) return null;
 
@@ -178,8 +176,10 @@ function LeftBottom({ cfg }) {
   if (cfg.type === "testimonial") {
     return (
       <div className="">
-        <div className="text-[4.1vh] leading-none text-gray-300">“</div>
-        <Paragraph className="!mt-2 !text-gray-700 !text-[2.6vh]">
+        <div className="lg:!text-[2vw] xl:!text-[2.6vh] leading-none text-gray-300">
+          “
+        </div>
+        <Paragraph className="!mt-2 !text-gray-700 lg:!text-[2vw] xl:!text-[2.6vh]">
           {cfg.quote}
         </Paragraph>
         <div className="mt-4 flex items-center gap-3">
@@ -230,17 +230,21 @@ export default function ApplicationLayout() {
           <div className="min-h-full p-[4.2vh] flex flex-col justify-between">
             <div className="w-full">
               <div className="flex items-center  mb-[3.8vh] shrink-0">
-                <img src={logo} alt="Blockforgex" className="w-[18vh]" />
+                <img
+                  src={logo}
+                  alt="Blockforgex"
+                  className="lg:w-[15vw] xl:w-[18vh]"
+                />
               </div>
 
               <div className="w-full">
                 <Title
                   level={2}
-                  className="!text-[4.1vh] !leading-[120%] !font-semibold !tracking-normal md:!w-full overflow-hidden !mb-2"
+                  className="lg:!text-[3vw] xl:!text-[4.1vh] !leading-[120%] !font-semibold !tracking-normal md:!w-full overflow-hidden !mb-2"
                 >
                   {meta.title}
                 </Title>
-                <Paragraph className="!text-gray-600 !leading-[150%] !text-[1.9vh]">
+                <Paragraph className="!text-gray-600 !leading-[150%] lg:!text-[1.3vw] xl:!text-[1.9vh]">
                   {meta.desc}
                 </Paragraph>
               </div>
