@@ -13,34 +13,32 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
   const app = useSelector(selectApp);
   const [form] = Form.useForm();
 
+  // state: kontrol apakah flex-col (mobile / desktop kecil) atau row
   const [isCol, setIsCol] = useState(false);
+  // state: kontrol apakah iPad Pro → row dengan width half
+  const [isIPadPro, setIsIPadPro] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
 
-      // ✅ cek viewport iPad Pro (portrait / landscape)
-      const isIPadProSize =
+      // ✅ cek viewport iPad Pro (portrait / landscape / devtools scaling)
+      const ipadPro =
         (width >= 1020 && width <= 1100 && height >= 1360 && height <= 1380) ||
         (width === 1093 && height === 819) ||
         (width >= 1360 && width <= 1380 && height >= 1020 && height <= 1100);
 
-      console.log(
-        "Width:",
-        width,
-        "Height:",
-        height,
-        "isIPadProSize:",
-        isIPadProSize
-      );
+      setIsIPadPro(ipadPro);
 
-      if (isIPadProSize) {
-        setIsCol(false); // 👉 iPad Pro → row
+      if (ipadPro) {
+        setIsCol(false); // iPad Pro → row
+      } else if (width < 1024) {
+        setIsCol(true); // mobile → col
       } else if (width >= 1024 && width <= 1279) {
-        setIsCol(true); // 👉 range normal → col
+        setIsCol(true); // desktop kecil non iPad → col
       } else {
-        setIsCol(false); // 👉 default → row
+        setIsCol(false); // default row
       }
     };
 
@@ -125,8 +123,13 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
           >
             <Radio.Button
               value="active"
-              className={`rf-pill !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 lg:!px-2 xl:!px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center
-    ${isCol ? "w-full" : "w-[calc(50%-8px)]"}`}
+              className={`rf-pill !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 lg:!px-2 xl:!px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center ${
+                isCol
+                  ? "w-full"
+                  : isIPadPro
+                  ? "w-[calc(50%-8px)]"
+                  : "w-[calc(50%-8px)]"
+              }`}
             >
               <JobSearchIcon
                 color="currentColor"
@@ -139,8 +142,13 @@ export default function Step1({ formIncomplete, onNext, setSubmitter }) {
 
             <Radio.Button
               value="casual"
-              className={`rf-pill !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center
-    ${isCol ? "w-full" : "w-[calc(50%-8px)]"}`}
+              className={`rf-pill !inline-flex !items-center !justify-center !gap-2 !h-auto !py-3 !px-4 lg:!py-[12px] xl:!py-[2vh] !rounded-xl !whitespace-wrap !text-center ${
+                isCol
+                  ? "w-full"
+                  : isIPadPro
+                  ? "w-[calc(50%-8px)]"
+                  : "w-[calc(50%-8px)]"
+              }`}
             >
               <DashboardBrowsingIcon
                 size={20}
