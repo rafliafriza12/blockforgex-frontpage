@@ -187,7 +187,7 @@ export default function VideoRecord() {
     )}`;
 
   return (
-    <div className="h-screen lg:h-dvh w-full gap-0 p-5 pt-0 lg:p-[4.2vh]">
+    <div className="min-h-screen lg:h-dvh w-full gap-0 p-5  pt-0 lg:p-[4.2vh]">
       <div className="max-w-6xl lg:max-w-none lg:w-[70vw] mx-auto h-full flex flex-col">
         <div className="flex items-center justify-between sticky z-[10] top-0 pt-5 lg:pt-0 bg-white">
           <img src={logo} alt="Blockforgex" className="w-[18vh]" />
@@ -213,7 +213,7 @@ export default function VideoRecord() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-start gap-y-2 mt-[4vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-start gap-y-2  lg:mt-[4vh]">
           {/* Back — tetap kiri; di mobile muncul di baris atas */}
           <a
             onClick={() => navigate(-1)}
@@ -387,17 +387,34 @@ export default function VideoRecord() {
         )}
 
         <div
-          style={{ width: isDesktop ? `${(35 * 16) / 9}vh` : `100%` }}
-          className={`mx-auto mt-6 lg:mt-[3vh] w-full `}
+          style={{ width: isDesktop ? `${(38 * 16) / 9}vh` : `100%` }}
+          className={`mx-auto mt-6 lg:mt-[3vh] w-full bg-[#FAFAFA] font-sans p-5 rounded-[20px] `}
         >
-          <div className="font-medium text-gray-800 lg:text-[2vh] mb-3">
-            Tips:
+          <div className="font-medium text-gray-800 lg:text-[2.3vh] mb-3 tracking-[-2%]">
+            Instructions:
           </div>
-          <ol className="space-y-2 text-sm text-gray-700 lg:text-[1.7vh]">
-            <li>• Keep your video between 1–3 minutes</li>
-            <li>• Ensure good lighting and clear audio</li>
-            <li>• Briefly introduce yourself and your background</li>
-          </ol>
+          <table className="w-full text-sm text-gray-700 lg:text-[1.8vh]  border-separate [border-spacing:0_8px]">
+            <tbody>
+              <tr>
+                <td className="align-top w-6 font-medium text-center">1</td>
+                <td className="text-left pl-2 tracking-[2%] pb-3">
+                  Keep your video between 1–3 minutes
+                </td>
+              </tr>
+              <tr>
+                <td className="align-top w-6 text-center font-medium">2</td>
+                <td className="text-left pl-2 tracking-[-2%] pb-3">
+                  Ensure good lighting and clear audio
+                </td>
+              </tr>
+              <tr>
+                <td className="align-top w-6 text-center font-medium">3</td>
+                <td className="text-left pl-2 tracking-[-2%]">
+                  Briefly introduce yourself and your background
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

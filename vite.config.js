@@ -11,6 +11,6 @@ export default defineConfig({
     assetsDir: "assets",
   },
   server: {
-    allowedHosts: ["69b2036e101a.ngrok-free.app"],
+    allowedHosts: ["b6639f306096.ngrok-free.app"],
   },
 });

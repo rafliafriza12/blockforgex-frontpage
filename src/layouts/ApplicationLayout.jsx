@@ -226,7 +226,7 @@ export default function ApplicationLayout() {
   return (
     <div className="h-[100vh] lg:h-[100dvh] grid grid-cols-1 lg:grid-cols-2 lg:p-[4.2vh] overflow-x-hidden lg:overflow-hidden">
       {isDesktop && (
-        <aside className="bg-[#F9F9FD] ">
+        <aside className="bg-[#F9F9FD] rounded-[8px]">
           <div className="min-h-full p-[4.2vh] flex flex-col justify-between">
             <div className="w-full">
               <div className="flex items-center  mb-[3.8vh] shrink-0">
