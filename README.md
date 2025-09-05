@@ -1,12 +1,224 @@
-# React + Vite
+# BlockForgeX Frontpage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend application built with React.js and Vite for the BlockForgeX platform.
 
-Currently, two official plugins are available:
+## 📋 Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [System Requirements](#system-requirements)
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [Project Structure](#project-structure)
+- [Available Scripts](#available-scripts)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
 
-## Expanding the ESLint configuration
+## 🖥️ System Requirements
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Make sure you have installed:
+
+- **Node.js** (version 16.x or higher)
+- **Git**
+- **Package Manager** (choose one):
+  - npm (included with Node.js)
+  - yarn
+  - pnpm
+
+## 🚀 Installation
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/rafliafriza12/blockforgex-frontpage.git
+```
+
+### 2. Navigate to Project Directory
+
+```bash
+cd blockforgex-frontpage
+```
+
+### 3. Install Dependencies
+
+Choose one of the following package managers:
+
+#### Using npm
+
+```bash
+npm install
+```
+
+#### Using yarn
+
+```bash
+yarn install
+```
+
+#### Using pnpm
+
+```bash
+pnpm install
+```
+
+## ▶️ Running the Project
+
+### Development Mode
+
+To run the project in development mode:
+
+#### Using npm
+
+```bash
+npm run dev
+```
+
+#### Using yarn
+
+```bash
+yarn dev
+```
+
+#### Using pnpm
+
+```bash
+pnpm dev
+```
+
+After running the command above, open your browser and go to:
+
+```
+http://localhost:5173
+```
+
+### Production Build
+
+To create a production build:
+
+#### Using npm
+
+```bash
+npm run build
+```
+
+#### Using yarn
+
+```bash
+yarn build
+```
+
+#### Using pnpm
+
+```bash
+pnpm build
+```
+
+### Preview Production Build
+
+To preview the production build:
+
+#### Using npm
+
+```bash
+npm run preview
+```
+
+#### Using yarn
+
+```bash
+yarn preview
+```
+
+#### Using pnpm
+
+```bash
+pnpm preview
+```
+
+## 📁 Project Structure
+
+```
+blockforgex-frontpage/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/          # Images and video assets
+│   ├── hooks/           # Custom React hooks
+│   ├── layouts/         # Layout components
+│   ├── pages/           # Application pages
+│   │   └── apply/       # Application form pages
+│   ├── store/           # Redux store
+│   ├── utils/           # Utility functions
+│   ├── App.jsx          # Main App component
+│   ├── App.css          # Global styles
+│   ├── main.jsx         # Entry point
+│   └── index.css        # Global CSS
+├── eslint.config.js     # ESLint configuration
+├── vite.config.js       # Vite configuration
+├── package.json         # Dependencies and scripts
+└── README.md           # Project documentation
+```
+
+## 📜 Available Scripts
+
+- `dev` - Run development server
+- `build` - Create production build
+- `preview` - Preview production build
+- `lint` - Run ESLint for code quality check
+
+## 🛠️ Technologies Used
+
+- **React.js** - Frontend library
+- **Vite** - Build tool and development server
+- **Redux Toolkit** - State management
+- **CSS3** - Styling
+- **ESLint** - Code linting
+
+## 🎯 Key Features
+
+- **Responsive Design** - Works optimally on desktop and mobile
+- **Multi-step Application Form** - Step-by-step registration form
+- **Video Recording** - Video recording functionality
+- **State Management** - Using Redux for state management
+- **Modern UI/UX** - Clean and modern interface
+
+## 🔧 Troubleshooting
+
+### Port already in use
+
+If port 5173 is already in use, Vite will automatically use the next available port.
+
+### Error during dependency installation
+
+Make sure you are using a compatible Node.js version (16.x+).
+
+### Clear cache if needed
+
+```bash
+# npm
+npm start -- --reset-cache
+
+# yarn
+yarn start --reset-cache
+
+# pnpm
+pnpm start --reset-cache
+```
+
+## 🤝 Contributing
+
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Create a Pull Request
+
+## 📞 Support
+
+If you encounter any issues or have questions, please create an issue in this repository.
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+**Happy Coding! 🚀**
