@@ -157,29 +157,6 @@ blockforgex-frontpage/
 └── README.md           # Project documentation
 ```
 
-## 📜 Available Scripts
-
-- `dev` - Run development server
-- `build` - Create production build
-- `preview` - Preview production build
-- `lint` - Run ESLint for code quality check
-
-## 🛠️ Technologies Used
-
-- **React.js** - Frontend library
-- **Vite** - Build tool and development server
-- **Redux Toolkit** - State management
-- **CSS3** - Styling
-- **ESLint** - Code linting
-
-## 🎯 Key Features
-
-- **Responsive Design** - Works optimally on desktop and mobile
-- **Multi-step Application Form** - Step-by-step registration form
-- **Video Recording** - Video recording functionality
-- **State Management** - Using Redux for state management
-- **Modern UI/UX** - Clean and modern interface
-
 ## 🔧 Troubleshooting
 
 ### Port already in use
@@ -202,23 +179,5 @@ yarn start --reset-cache
 # pnpm
 pnpm start --reset-cache
 ```
-
-## 🤝 Contributing
-
-1. Fork this repository
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Create a Pull Request
-
-## 📞 Support
-
-If you encounter any issues or have questions, please create an issue in this repository.
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 **Happy Coding! 🚀**
